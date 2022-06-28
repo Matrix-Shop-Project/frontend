@@ -30,7 +30,7 @@ export const UserContextProvider = ({ children }) => {
 
   const signIn = async (email, password) => {
     try {
-      const response = await axios.get(
+      const response = await axios.post(
         `${process.env.REACT_APP_API}/users/signin`,
         {
           email,

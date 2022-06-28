@@ -138,12 +138,8 @@ export const Register = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               onClick={() => {
-                if (!password === password) {
-                  alert('Password does not match!');
-                } else {
                 signUp(firstName, lastName, email, password);
               }}
-            }
             >
               Sign Up
             </Button>
