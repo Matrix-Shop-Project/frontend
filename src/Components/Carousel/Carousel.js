@@ -1,9 +1,9 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { Paper, Button, Typography, Box } from "@mui/material";
-import { green } from "@mui/material/colors";
+import { Paper, Button, Typography } from "@mui/material";
+//import { green } from "@mui/material/colors";
 import { makeStyles } from "@mui/styles";
-import Icon from "@mui/material/Icon";
+//import Icon from "@mui/material/Icon";
 
 function Hero(props) {
   var items = [

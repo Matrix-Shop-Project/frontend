@@ -74,14 +74,14 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Header() {
-  const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
+  const { header, menuButton, toolbar, drawerContainer } = useStyles();
 
   const [state, setState] = useState({
     mobileView: false,
     drawerOpen: false,
   });
 
-  const { mobileView, drawerOpen } = state;
+  const { drawerOpen } = state;
 
   useEffect(() => {
     const setResponsiveness = () => {

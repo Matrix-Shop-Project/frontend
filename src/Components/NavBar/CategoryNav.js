@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import { Link as RouterLink } from "react-router-dom";
 import { Link } from "@material-ui/core";
 
-import shoppingBag from "./lottie/shopping-bag.json";
+//import shoppingBag from "./lottie/shopping-bag.json";
 import shoppingWoman from "./lottie/woman-icon.json";
 import shoppingMan from "./lottie/man-account-icon.json";
 import shoppingHome from "./lottie/home-icon.json";
