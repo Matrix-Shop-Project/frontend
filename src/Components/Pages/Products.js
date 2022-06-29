@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../Footer/Footer";
 import Product from "../Products/Products";
 
 export default function Products() {
@@ -10,7 +9,6 @@ export default function Products() {
       </div>
 
       <Product />
-      <Footer />
     </>
   );
 }
