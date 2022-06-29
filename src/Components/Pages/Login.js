@@ -10,6 +10,7 @@ export default function Login() {
     <div className="login">
       <LoginForm />
     </div>
+
     </>
   );
 }
