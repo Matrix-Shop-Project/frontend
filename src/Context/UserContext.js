@@ -31,7 +31,7 @@ export const UserContextProvider = ({ children }) => {
   const signIn = async (email, password) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/users/signin`,
+        `https://matrixshop-backend.herokuapp.com/users/signin`,
         {
           email,
           password,
@@ -47,7 +47,7 @@ export const UserContextProvider = ({ children }) => {
   const signUp = async (firstName, lastName, email, password) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/users/signup`,
+        `https://matrixshop-backend.herokuapp.com/users/signup`,
         {
           firstName,
           lastName,
