@@ -1,5 +1,6 @@
 import React from "react";
 import Carousels from "../Carousel/Carousel";
+
 import Category from "./Category";
 import "../../sass/Pages.scss"
 

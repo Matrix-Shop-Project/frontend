@@ -1,7 +1,9 @@
 import React from "react";
 
+
 import "../../sass/Pages.scss"
 import { Register } from "../Login/Register";
+
 
 
 export default function SignUp() {
@@ -10,6 +12,7 @@ export default function SignUp() {
     <div className="register">
       <Register />
     </div>
+
     </>
   );
 }
