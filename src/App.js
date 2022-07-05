@@ -9,7 +9,7 @@ import Products from "./Components/Pages/Products";
 import Impressum from "./Components/Pages/Impressum";
 import Login from "./Components/Pages/Login";
 import Category from "./Components/Pages/Category";
-import ShoppingCard from "./Components/Pages/ShoppingCard";
+import ShoppingCart from "./Components/Pages/ShoppingCart";
 import Contact from "./Components/Pages/Contact";
 import Header from "./Components/NavBar/Header";
 import SignUp from "./Components/Pages/SignUp";
@@ -17,8 +17,6 @@ import ChatApp from "./Components/Chat/ChatApp";
 import Account from "./Components/Pages/Account";
 import Footer from "./Components/Footer/Footer";
 import UserAdmin from "./Components/Pages/Admin";
-
-
 
 export default function App() {
   return (
@@ -33,7 +31,7 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/category" element={<Category />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/shoppingcard" element={<ShoppingCard />} />
+          <Route path="/shoppingcard" element={<ShoppingCart />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/chat" element={<ChatApp />} />

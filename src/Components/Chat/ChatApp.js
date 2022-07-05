@@ -5,13 +5,9 @@ import { useState } from "react";
 
 
 
-<<<<<<< HEAD
-=======
 
 
 const socket = io.connect("http://vens.selfhost.co:5000");
->>>>>>> 04206694b9b9313391cfe92fbbe1992e5d9b6c08
-
 
 
 const socket = io.connect("http://vens.selfhost.co:5000", {
