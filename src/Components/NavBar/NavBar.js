@@ -26,6 +26,7 @@ export default function Navbar() {
       <IconContext.Provider value={{ color: "#000" }}>
         {/* All the icons now are white */}
         <div className="navbar">
+          
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
