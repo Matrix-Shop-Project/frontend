@@ -16,6 +16,7 @@ import SignUp from "./Components/Pages/SignUp";
 import ChatApp from "./Components/Chat/ChatApp";
 import Account from "./Components/Pages/Account";
 import Footer from "./Components/Footer/Footer";
+import UserAdmin from "./Components/Pages/Admin";
 
 
 
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/chat" element={<ChatApp />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/admin/*" element={<UserAdmin />} />
         </Routes>
         <Footer />
       </Router>
