@@ -6,10 +6,14 @@ import { useState } from "react";
 
 
 
-const socket = io.connect("https://matrixshop-chat-app.herokuapp.com");
 
 
 
+
+const socket = io.connect("http://vens.selfhost.co:5000", {
+  withCredentials: true,
+
+});
 
 function ChatApp() {
   const [username, setUsername] = useState("");
