@@ -5,9 +5,6 @@ import { ProductContextProvider } from "./Context/ProductContext";
 import App from "./App";
 import { AdminContextProvider } from "./Context/AdminContext";
 
-import { createRoot } from "react-dom/client";
-
-
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
