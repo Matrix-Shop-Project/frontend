@@ -6,7 +6,7 @@ const Products = () => {
 
   return (
     <>
-      <div className="products-container">{products}</div>
+      <div className="products-container">{JSON.stringify(products)}</div>
     </>
   );
 };
