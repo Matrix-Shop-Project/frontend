@@ -10,10 +10,9 @@ export const ProductContextProvider = ({ children }) => {
     (async () => {
       try {
         const response = await axios.get(
-          `https://matrixshop-backend.herokuapp.com/products`
+          `${process.env.REACT_APP_API}/products`
         );
         setProducts(response.data);
-        console.log("Backend data", response.data);
       } catch (err) {
         console.log(err);
       }
