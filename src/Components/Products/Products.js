@@ -1,15 +1,19 @@
-import React from 'react';
+import React from "react";
+import { useProductContext } from "../../Context/ProductContext";
+
+const Products = () => {
+  const { products } = useProductContext();
+
+  return (
+    <>
 
 
-// Components
+      <div className="products-container">{JSON.stringify(products)}</div>
 
 
-export default function Products() {
-	return (
-		<>
-		<div className="products-container">
-		</div>
-		</>
-	);
+    </>
+  );
 };
+
+export default Products;
 

@@ -17,6 +17,9 @@ import Navbar from "./NavBar";
 
 import Logo from "./logo.png"
 
+import CategoryNav from "./CategoryNav";
+
+
 
 const headersData = [
   {
@@ -120,7 +123,7 @@ export default function Header() {
 
     return (
       <Toolbar>
-        <IconButton
+        {/* <IconButton
           {...{
             edge: "start",
             color: "secondary",
@@ -130,7 +133,7 @@ export default function Header() {
           }}
         >
           <MenuIcon />
-        </IconButton>
+        </IconButton> */}
 
         <Drawer
           {...{
@@ -210,7 +213,9 @@ export default function Header() {
        <div>{displayMobile()}</div> 
 
       {/* <Search /> */}
-      {/* <CategoryNav /> */}
+
+       <CategoryNav />
+
     </header>
   );
 }

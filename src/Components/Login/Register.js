@@ -154,7 +154,6 @@ export const Register = () => {
         </Box>
         {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
-      <Footer />
     </ThemeProvider>
   );
 }

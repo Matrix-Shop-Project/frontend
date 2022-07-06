@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-
 import {
   CartComponent,
   ProductComponent,
@@ -11,10 +10,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "animate.css/animate.min.css";
 import "font-awesome/css/font-awesome.min.css";
 
-
 const { getDefaultLocalization } = cartLocalization;
-
-
 
 // You may take localization object from wherever you want, that's just an example
 // For more information, see localization section
@@ -97,7 +93,6 @@ class ProductsCart extends PureComponent {
 
   render() {
     const {
-      
       addProduct,
       generateProductKey,
       updateProduct,
@@ -122,8 +117,7 @@ class ProductsCart extends PureComponent {
         getLocalization={getCheckoutButtonLocalization}
       />
     );
-
-    return  (
+    return (
       <div className="container">
         <ProductComponent
           {...product}
