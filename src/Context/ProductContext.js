@@ -32,5 +32,6 @@ export const ProductContextProvider = ({ children }) => {
 };
 
 export const useProductContext = () => {
+export const useProduct = () => {
   return useContext(ProductContext);
 };
