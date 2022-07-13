@@ -17,7 +17,6 @@ import HoverRating from "./Rating";
 import "../../sass/ShoppingCart.scss";
 import "../../sass/Products.scss";
 
-
 const ProductsCart = () => {
   const { addItem } = useCart();
 
@@ -79,19 +78,26 @@ const ProductsCart = () => {
             <HoverRating />
           </CardContent>
 
-          <Button size="large" color="success" variant="contained"
+          <Button
+            size="large"
+            color="success"
+            variant="contained"
             onClick={() => addItem({ ...p, id: p._id })}
-         
           >
             Add to cart
           </Button>
         </Card>
-    <div>
-      {products.map((p) => (
-        <div key={p.id}>
-          <button onClick={() => addItem({...p, id: p._id})}>{p.name} - Add to cart</button>
-        </div>
       ))}
+      <div>
+        {products.map((p) => (
+          <div key={p.id}>
+            <button onClick={() => addItem({ ...p, id: p._id })}>
+              {" "}
+              {p.name} - Add to cart
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
