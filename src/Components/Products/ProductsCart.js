@@ -79,21 +79,12 @@ const ProductsCart = () => {
             <HoverRating />
           </CardContent>
 
-          <button
+          <Button size="large" color="success" variant="contained"
             onClick={() => addItem({ ...p, id: p._id })}
-            style={{
-              width: "150px",
-              padding: "15px",
-              color: "white",
-              fontSize: "18px",
-              fontWeight: 400,
-              border: 0,
-              borderRadius: "5px",
-              backgroundColor: "#43A047",
-            }}
+         
           >
             Add to cart
-          </button>
+          </Button>
         </Card>
       ))}
     </div>
