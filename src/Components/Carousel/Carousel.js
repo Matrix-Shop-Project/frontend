@@ -25,7 +25,7 @@ function Hero(props) {
   ];
 
   return (
-    <Carousel
+    <Carousel height={474}
       next={() => {
         /* Do stuff */
       }}
