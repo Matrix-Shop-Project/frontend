@@ -1,5 +1,5 @@
 import React from "react";
-import Carousels from "../Carousel/Carousel";
+import Carousels from "../../Components/Carousel/Carousel";
 
 import Category from "./Category";
 import "../../sass/Pages.scss"

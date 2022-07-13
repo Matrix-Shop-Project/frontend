@@ -46,8 +46,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     position: "relative",
     width: "75vw",
-    margin: "auto",
-    marginTop: "60px"
+    margin: "auto"
   },
   img_responsive: {
     maxHeight: "560px",
