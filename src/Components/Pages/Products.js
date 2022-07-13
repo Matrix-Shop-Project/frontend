@@ -1,14 +1,13 @@
 import React from "react";
-import Product from "../Products/Products";
+import ProductsCart from "../Products/ProductsCart";
 
 export default function Products() {
   return (
     <>
-      <div className="products" style={{marginTop: "150px"}}>
+      <div className="products" style={{ marginTop: "150px" }}>
         <h1>Products</h1>
       </div>
-
-      <Product />
+      <ProductsCart />
     </>
   );
 }

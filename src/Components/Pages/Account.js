@@ -1,4 +1,5 @@
 import React from "react";
+import ProductCart from "../Products/ProductCart";
 
 import MyAccount from "../Users/Account";
 
@@ -7,7 +8,8 @@ export default function Account() {
     <>
     <div className="account">
       <h1>Deins</h1>
-      <MyAccount />
+        {/* <MyAccount /> */}
+        <ProductCart/>
     </div>
 
     </>
