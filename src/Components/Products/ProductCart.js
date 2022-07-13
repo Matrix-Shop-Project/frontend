@@ -4,8 +4,6 @@ import React from "react";
 import { useCart } from "react-use-cart";
 import "../../sass/ShoppingCart.scss";
 
-import {  useCart } from "react-use-cart";
-
 const ProductCart = () => {
 
 
