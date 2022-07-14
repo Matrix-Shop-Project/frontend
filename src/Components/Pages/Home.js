@@ -10,7 +10,7 @@ import "../../sass/Pages.scss"
 export default function Home() {
   return (
     <>
-    <div className="home">
+    <div className="home1">
       
      <div>
       <div className="Carousel">
@@ -18,7 +18,6 @@ export default function Home() {
      </div>
      <Category />
      </div>
-     
     </div>
     </>
   );

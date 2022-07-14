@@ -14,7 +14,7 @@ import ShoppingCart from "./Components/Pages/ShoppingCart";
 import Contact from "./Components/Pages/Contact";
 import Header from "./Components/NavBar/Header";
 import SignUp from "./Components/Pages/SignUp";
-// import ChatApp from "./Components/Chat/ChatApp";
+import ChatApp from "./Components/Chat/ChatApp";
 import Account from "./Components/Pages/Account";
 import Footer from "./Components/Footer/Footer";
 import UserAdmin from "./Components/Pages/Admin";
@@ -29,7 +29,7 @@ export default function App() {
     <div className="App">
       <Router>
         <Header />
-        {/* <ChatApp /> */}
+         <ChatApp /> 
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/products/*"></Route>
@@ -40,7 +40,7 @@ export default function App() {
           <Route path="/shoppingcard" element={<ShoppingCart />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
-          {/* <Route path="/chat" element={<ChatApp />} /> */}
+          <Route path="/chat" element={<ChatApp />} /> 
           <Route path="/account" element={<Account />} />
           <Route path="/admin/*" element={<UserAdmin />} />
           <Route path="/admin/products" element={<AdminProducts />} />

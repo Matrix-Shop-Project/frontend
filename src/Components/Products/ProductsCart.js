@@ -1,165 +1,109 @@
-import React, { PureComponent } from "react";
-
+import React from "react";
+import { useCart } from "react-use-cart";
+import { useProductContext } from "../../Context/ProductContext";
+//import ComponentShoppingCart from "../../Components/Products/ComponentShoppingCart";
 import {
-  CartComponent,
-  ProductComponent,
-  CheckoutButtonComponent,
-  cartLocalization,
-} from "react-shopping-cart";
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Link as RouterLink } from "react-router-dom";
+import HoverRating from "./Rating";
+import "../../sass/ShoppingCart.scss";
+import "../../sass/Products.scss";
 
-import "bootstrap/dist/css/bootstrap.css";
-import "animate.css/animate.min.css";
-import "font-awesome/css/font-awesome.min.css";
+const ProductsCart = () => {
+  const { addItem } = useCart();
 
+  const { products } = useProductContext();
 
-const { getDefaultLocalization } = cartLocalization;
+  return (
+    <div className="products-container">
+      {products.map((p) => (
+        <Card
+          key={p.id}
+          sx={{ maxWidth: 445, margin: "40px", padding: "20px" }}
+        >
+          <CardMedia
+            component="img"
+            height="140"
+            image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+            alt="green iguana"
+          ></CardMedia>
 
+          <CardContent>
+            <Typography
+              className="shopping-cart-container__title"
+              gutterBottom
+              variant="h5"
+              component="div"
+            >
+              {p.productName}
+            </Typography>
+            <Typography
+              variant="body2"
+              className="shopping-cart-container__item"
+              component="p"
+            >
+              {/* {Description} */}
+              {p.description}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              component="div"
+            >
+              {/* {Category} */}
+              {p.category}
+              <h2 style={{ color: "red" }}>{p.price} €</h2>
+              <hr />
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">
+              <AddShoppingCartIcon />
+            </Button>
+            <Button size="small">Wunschzettel</Button>
+            <Button size="small" component={RouterLink} to="/:product_id">
+              Weiter
+            </Button>
+            <IconButton aria-label="add to favorites"></IconButton>
+          </CardActions>
+          <CardContent>
+            <HoverRating />
+          </CardContent>
 
-
-// You may take localization object from wherever you want, that's just an example
-// For more information, see localization section
-const iPadCaseLocalization = {
-  color: "Color",
-  iPadCase: "iPad case",
-  red: "Red",
-  green: "Green",
-  yellow: "Yellow",
-  GBP: "£",
-  EUR: "€",
-  USD: "$",
-};
-
-const iPadPropertiesWithAdditionalCostLocalization = {
-  yellow: "Yellow (+{cost, number, CUR})",
-};
-
-class ProductsCart extends PureComponent {
-  state = {
-    products: {},
-    product: {
-      name: "iPadCase",
-      id: "ipad-case",
-      path: "/shop/ipad-case/",
-      properties: {
-        color: [
-          "red",
-          "green",
-          {
-            additionalCost: {
-              EUR: 2,
-            },
-            value: "yellow",
-          },
-        ],
-      },
-       propertiesToShowInCart: ["color"],
-      prices: {EUR: 80},
-      currency: "EUR",
-      imageSrc: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-    },
-    getProductLocalization: getDefaultLocalization("product", "en", {
-      ...iPadCaseLocalization,
-      ...iPadPropertiesWithAdditionalCostLocalization,
-    }),
-    getCheckoutButtonLocalization: getDefaultLocalization(
-      "checkoutButton",
-      "en",
-      iPadCaseLocalization
-    ),
-    getCartLocalization: getDefaultLocalization(
-      "cart",
-      "en",
-      iPadCaseLocalization
-    ),
-  };
-
-  addProduct = (key, product, currency) =>
-    void this.setState(
-      ({
-        products: { [key]: cartProduct = { quantity: 0 }, ...restOfProducts },
-      }) => ({
-        products: {
-          ...restOfProducts,
-          [key]: {
-            ...product,
-            quantity: product.quantity + cartProduct.quantity,
-          },
-        },
-      })
-    );
-
-  generateProductKey = (id, properties) =>
-    `${id}/${Object.entries(properties).join("_")}`;
-
-  updateProduct = (key, updatedProduct) => void console.log(":)");
-
-  removeProduct = (key) => void console.log(":C");
-
-  render() {
-    const {
-      
-      addProduct,
-      generateProductKey,
-      updateProduct,
-      removeProduct,
-      state,
-    } = this;
-
-    const {
-      getProductLocalization,
-      getCheckoutButtonLocalization,
-      getCartLocalization,
-      products,
-      product,
-    } = state;
-
-    const checkoutButtonElement = (
-      <CheckoutButtonComponent
-        grandTotal={500}
-        hidden={false}
-        checkoutURL="/shoppingcard"
-        currency="EUR"
-        getLocalization={getCheckoutButtonLocalization}
-      />
-    );
-
-    return  (
-      <div className="container">
-        <ProductComponent
-          {...product}
-          checkoutButton={checkoutButtonElement}
-          onAddProduct={
-            addProduct
-            // Help product to get into the cart
-          }
-          generateProductKey={
-            generateProductKey
-            // create product key as you wish
-          }
-          getLocalization={getProductLocalization}
-        />
-
-        <CartComponent
-          products={
-            products
-            // Provide your own product's Object(Look at Products)
-          }
-          onUpdateProduct={
-            updateProduct
-            // Update something
-          }
-          getLocalization={getCartLocalization}
-          currency="EUR"
-          onRemoveProduct={
-            removeProduct
-            // Remove something
-          }
-          checkoutButton={checkoutButtonElement}
-          isCartEmpty={false}
-        />
+          <Button
+            size="large"
+            color="success"
+            variant="contained"
+            onClick={() => addItem({ ...p, id: p._id })}
+          >
+            Add to cart
+          </Button>
+        </Card>
+      ))}
+      <div>
+        {products.map((p) => (
+          <div key={p.id}>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => addItem({ ...p, id: p._id })}
+            >
+              {" "}
+              {p.name} - Add to cart
+            </Button>
+          </div>
+        ))}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default ProductsCart;

@@ -1,7 +1,7 @@
 import React from "react";
 import ComponentShoppingCart from "../../Components/Products/ComponentShoppingCart";
 // import Footer from "../Footer/Footer";
-import "../../sass/ShoppingCart.scss"
+import "../../sass/ShoppingCart.scss";
 
 export default function Category() {
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductCart from './ProductCart';
 
 const Item = props => {
 	return (
@@ -11,6 +12,7 @@ const Item = props => {
 				<p>$ {props.price}</p>
 				<button>Remove from cart</button>
 			</div>
+			<ProductCart />
 		</div>
 	);
 };
