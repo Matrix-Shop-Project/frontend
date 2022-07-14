@@ -46,15 +46,19 @@ html {
 
 
 }
-.home {
-	.jss1 {
-		width: 75vw;
-		margin: auto;
-			margin-top: auto;
-		display: flex;
-		position: relative;
-		margin-top: 0px !important;
-		justify-content: center;
-	}
+ .home {
+// 	.jss1 {
+// 		width: 75vw;
+// 		margin: auto;
+// 			margin-top: auto;
+// 		display: flex;
+// 		position: relative;
+// 		margin-top: 0px !important;
+// 		justify-content: center;
+// 	}
+.Carousel {
+	width: 70%;
+	margin: 1rem auto;
 }
+ }
 

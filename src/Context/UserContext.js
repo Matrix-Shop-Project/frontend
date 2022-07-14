@@ -11,27 +11,30 @@ export const UserContextProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    let timeoutHandle = 0;
+    // let timeoutHandle = 0;
     if (token) {
       localStorage.setItem("token", token);
       const decoded = jwt_decode(token);
-      timeoutHandle = setTimeout(() => {
-        setToken(null);
-      }, decoded.exp * 1000 - Date.now());
+      // timeoutHandle = setTimeout(() => {
+      //   setToken(null);
+      //   console.log("timeoutHandle:")
+      // }, 100000);
+      
     } else {
       localStorage.removeItem("token");
     }
-    return () => {
-      if (timeoutHandle !== 0) {
-        clearTimeout(timeoutHandle);
-      }
-    };
+    // return () => {
+    //   if (timeoutHandle !== 0) {
+    //     clearTimeout(timeoutHandle);
+    //   }
+    // };
   }, [token]);
+console.log("UserContext:", token)
 
   const signIn = async (email, password) => {
     try {
       const response = await axios.post(
-        `https://matrixshop-backend.herokuapp.com/users/signin`,
+        `${process.env.REACT_APP_API}/users/signin`,
 
         {
           email,
@@ -48,7 +51,7 @@ export const UserContextProvider = ({ children }) => {
   const signUp = async (firstName, lastName, email, password) => {
     try {
       const response = await axios.post(
-        `https://matrixshop-backend.herokuapp.com/users/signup`,
+        `${process.env.REACT_APP_API}/users/signup`,
         {
           firstName,
           lastName,

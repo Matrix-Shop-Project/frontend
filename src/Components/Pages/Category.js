@@ -10,17 +10,17 @@ export default function Category() {
       
     <h1>Category 1</h1>
       <div className="shopping-cart-container">
-      <div className="col-1">
+      <div className="column-1">
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       </div>
-      <div className="col-1">
+      <div className="column-1">
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       </div>
-      <div className="col-1">
+      <div className="column-1">
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       <ComponentShoppingCart />
@@ -28,17 +28,17 @@ export default function Category() {
       </div>
       <h1>Category 2</h1>
       <div className="shopping-cart-container">
-      <div className="col-1">
+      <div className="column-1">
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       </div>
-      <div className="col-1">
+      <div className="column-1">
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       </div>
-      <div className="col-1">
+      <div className="column-1">
       <ComponentShoppingCart />
       <ComponentShoppingCart />
       <ComponentShoppingCart />
