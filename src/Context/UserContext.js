@@ -15,7 +15,7 @@ export const UserContextProvider = ({ children }) => {
     // let timeoutHandle = 0;
     if (token) {
       localStorage.setItem("token", token);
-      
+
       // timeoutHandle = setTimeout(() => {
       //   setToken(null);
       //   console.log("timeoutHandle:")
@@ -30,7 +30,9 @@ export const UserContextProvider = ({ children }) => {
     //   }
     // };
   }, [token]);
+
 console.log("UserContext Token:", token)
+
 
   const signIn = async (email, password) => {
     try {
@@ -51,7 +53,8 @@ console.log("UserContext Token:", token)
 
   const signUp = async (firstName, lastName, email, password) => {
     try {
-      const response = await axios.get(
+
+      const response = await axios.post(
         `${process.env.REACT_APP_API}/users/signup`,
         {
           firstName,
