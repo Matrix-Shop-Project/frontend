@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useUser } from "../../Context/UserContext";
+import { useNavigate } from 'react-router-dom';
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -15,6 +16,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 
 // function Copyright(props) {
 //   return (
@@ -31,16 +33,26 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
-export const LoginForm =() => {
-  const { signIn } = useUser();
+
+export const LoginForm = () => {
+  const nav = useNavigate();
+  const { signIn, role, decoded } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    console.log("User test role:", decoded.role)
+    if (decoded.role === 1) {
+      nav('/admin')
+    } else {
+      nav('/account');
+    }
     console.log({
       email: data.get('email'),
       password: data.get('password'),
+      UserRole: data.get('userAdmin'),
     });
   };
 
@@ -64,7 +76,7 @@ export const LoginForm =() => {
           </Typography>
           <Box
             component="form"
-             onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
           >

@@ -9,12 +9,13 @@ export const UserContextProvider = ({ children }) => {
     const token = localStorage.getItem("token");
     return token || null;
   });
+   
 
   useEffect(() => {
     // let timeoutHandle = 0;
     if (token) {
       localStorage.setItem("token", token);
-      const decoded = jwt_decode(token);
+      
       // timeoutHandle = setTimeout(() => {
       //   setToken(null);
       //   console.log("timeoutHandle:")
@@ -29,7 +30,7 @@ export const UserContextProvider = ({ children }) => {
     //   }
     // };
   }, [token]);
-console.log("UserContext:", token)
+console.log("UserContext Token:", token)
 
   const signIn = async (email, password) => {
     try {
@@ -50,7 +51,7 @@ console.log("UserContext:", token)
 
   const signUp = async (firstName, lastName, email, password) => {
     try {
-      const response = await axios.post(
+      const response = await axios.get(
         `${process.env.REACT_APP_API}/users/signup`,
         {
           firstName,
@@ -66,6 +67,18 @@ console.log("UserContext:", token)
     }
   };
 
+  const [role, setRole] = useState();
+    const userAdmin = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API}/users`);
+      // const role = response.data;
+      setRole(response.data);
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+
   const signOut = () => {
     setToken(null);
   };
@@ -74,6 +87,7 @@ console.log("UserContext:", token)
   if (token) {
     user = jwt_decode(token);
   }
+  const decoded = jwt_decode(token);
 
   return (
     <UserContext.Provider
@@ -83,6 +97,9 @@ console.log("UserContext:", token)
         signIn,
         signUp,
         signOut,
+        userAdmin,
+        role,
+        decoded
       }}
     >
       {children}
