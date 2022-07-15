@@ -36,7 +36,7 @@ const theme = createTheme();
 
 export const LoginForm = () => {
   const nav = useNavigate();
-  const { signIn, role, decoded } = useUser();
+  const { signIn, decoded } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
