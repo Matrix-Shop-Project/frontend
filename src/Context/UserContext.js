@@ -15,7 +15,9 @@ export const UserContextProvider = ({ children }) => {
     // let timeoutHandle = 0;
     if (token) {
       localStorage.setItem("token", token);
+
       // const decoded = jwt_decode(token);
+
       // timeoutHandle = setTimeout(() => {
       //   setToken(null);
       // }, decoded.exp * 1000 - Date.now());
@@ -28,6 +30,9 @@ export const UserContextProvider = ({ children }) => {
     //   }
     // };
   }, [token]);
+
+console.log("UserContext Token:", token)
+
 
 console.log("UserContext Token:", token)
 
@@ -68,15 +73,19 @@ console.log("UserContext Token:", token)
     }
   };
 
+
   const [role, setRole] = useState([]);
+
     const userAdmin = async () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API}/users`);
       // const role = response.data;
+
       // setRole(response.data);
       // console.log(response.data)
       const { token } = response.data;
       setToken(token);
+
     } catch (err) {
       console.log(err.message)
     }
@@ -91,7 +100,7 @@ console.log("UserContext Token:", token)
   if (token) {
     user = jwt_decode(token);
   }
-  
+
 
   return (
     <UserContext.Provider
