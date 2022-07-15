@@ -36,23 +36,23 @@ const theme = createTheme();
 
 export const LoginForm = () => {
   const nav = useNavigate();
-  const { signIn, decoded } = useUser();
+  const { signIn, user} = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log("User test role:", decoded.role)
-    if (decoded.role === 1) {
+    console.log("User test role:", user.role)
+    if (user.role === 1) {
+      console.log("User is Admin")
       nav('/admin')
     } else {
       nav('/account');
     }
     console.log({
       email: data.get('email'),
-      password: data.get('password'),
-      UserRole: data.get('userAdmin'),
+      password: data.get('password')
     });
   };
 

@@ -6,7 +6,7 @@ import App from "./App";
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
- import { AdminContextProvider } from "./Context/AdminContext";
+//  import { AdminContextProvider } from "./Context/AdminContext";
 
 
 const container = document.getElementById("root");
@@ -14,13 +14,13 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-     <AdminContextProvider> 
+     {/* <AdminContextProvider>  */}
       <UserContextProvider>
         <ProductContextProvider>
           <App />
         </ProductContextProvider>
       </UserContextProvider>
-    </AdminContextProvider> 
+    {/* </AdminContextProvider>  */}
     </Provider>
   </React.StrictMode>
 );
