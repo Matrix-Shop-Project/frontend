@@ -16,7 +16,7 @@ export default function Home() {
       <div className="Carousel">
      <Carousels  />
      </div>
-     <Category />
+      {/* <Category /> */}
      </div>
     </div>
     </>
