@@ -111,7 +111,7 @@ export default function CategoryNav() {
       <Link
           {...{
             component: RouterLink,
-            to: "/category",
+            to: "/bitcoin",
             style: { textDecoration: "none" },
             key: "1cat",
           }}

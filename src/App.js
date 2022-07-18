@@ -17,6 +17,7 @@ import ChatApp from "./Components/Chat/ChatApp";
 import Account from "./Components/Pages/Account";
 import Footer from "./Components/Footer/Footer";
 import UserAdmin from "./Components/Pages/Admin";
+import Bitcoin from "./Components/Bitcoin/Bitcoin";
 
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/category" element={<Category />} />
+          <Route path="/bitcoin" element={<Bitcoin />} />
           <Route path="/products" element={<Products />} />
           <Route path="/shoppingcard" element={<ShoppingCart />} />
           <Route path="/contact" element={<Contact />} />

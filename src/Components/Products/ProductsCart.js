@@ -88,20 +88,6 @@ const ProductsCart = () => {
           </Button>
         </Card>
       ))}
-      <div>
-        {products.map((p) => (
-          <div key={p.id}>
-            <Button
-              variant="contained"
-              color="success"
-              onClick={() => addItem({ ...p, id: p._id })}
-            >
-              {" "}
-              {p.name} - Add to cart
-            </Button>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
