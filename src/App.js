@@ -3,6 +3,7 @@ import "./sass/styles.scss";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+
 // PAGES
 import Home from "./Components/Pages/Home";
 import Products from "./Components/Pages/Products";
@@ -18,6 +19,10 @@ import Account from "./Components/Pages/Account";
 import Footer from "./Components/Footer/Footer";
 import UserAdmin from "./Components/Pages/Admin";
 import Bitcoin from "./Components/Bitcoin/Bitcoin";
+import AdminProducts from "./Components/Products/Admin/AdminProducts";
+import EditProduct from "./Components/Products/Admin/editproduct";
+import CreateProduct from "./Components/Products/Admin/createproduct"
+
 
 
 export default function App() {
@@ -25,10 +30,10 @@ export default function App() {
     <div className="App">
       <Router>
         <Header />
-        <ChatApp />
+         <ChatApp /> 
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/:product_id"></Route>
+          <Route path="/products/*"></Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/category" element={<Category />} />
@@ -37,41 +42,16 @@ export default function App() {
           <Route path="/shoppingcard" element={<ShoppingCart />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
-          <Route path="/chat" element={<ChatApp />} />
+          <Route path="/chat" element={<ChatApp />} /> 
           <Route path="/account" element={<Account />} />
           <Route path="/admin/*" element={<UserAdmin />} />
+          <Route path="/admin/products" element={<AdminProducts />} />
+          <Route path="/admin/editproduct/:productId" element={<EditProduct />} />
+          <Route path="/admin/createproduct" element={<CreateProduct />} />
+          {/* <Route path="/admin/editproduct/:id" element={<AdminProducts />} /> */}
         </Routes>
         <Footer />
       </Router>
     </div>
   );
 }
-
-// import axios from 'axios';
-// import React, { useEffect, useState } from 'react';
-
-// function App() {
-//   const [data, setDataUsers] = useState([]);
-//   useEffect(() => {
-//     const loadData = async () => {
-//       try {
-//         const response = await axios.get(`${process.env.REACT_APP_API}`);
-//         setDataUsers(response.data);
-//       } catch (err) {
-//         console.log(err);
-
-//       }
-//     };
-//     loadData();
-//   }, []);
-
-//   return (
-//     <>
-//     <h1>Matrix Shop</h1>
-
-//     {JSON.stringify(data)}
-//     </>
-//   );
-// }
-
-// export default App;

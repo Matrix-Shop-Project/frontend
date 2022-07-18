@@ -41,12 +41,8 @@ function Hero(props) {
 }
 
 const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    justifyContent: "center",
-    position: "relative",
-    width: "75vw",
-    margin: "auto"
+    root: {
+    position: "relative"
   },
   img_responsive: {
     maxHeight: "560px",

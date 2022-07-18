@@ -88,8 +88,6 @@ const ProductsCart = () => {
           </Button>
         </Card>
       ))}
-<<<<<<< HEAD
-=======
       <div>
         {products.map((p) => (
           <div key={p.id}>
@@ -105,7 +103,6 @@ const ProductsCart = () => {
           </div>
         ))}
       </div>
->>>>>>> 32fb830a2e67866c56a679785d94fe4bd091143e
     </div>
   );
 };

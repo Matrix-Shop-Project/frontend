@@ -33,10 +33,10 @@ export const AdminContextProvider = ({ children }) => {
     };
   }, [token]);
 
-  const loadProducts = async (name, description, category, price) => {
+  const loadProducts = async (productName, description, category, price, id) => {
     try {
-      const list = await axios.get(`${process.env.REACT_APP_API}/products`, {
-        name,
+      const list = await axios.get(`${process.env.REACT_APP_API}/products/${id}`, {
+        productName,
         description,
         category,
         price,
@@ -45,12 +45,14 @@ export const AdminContextProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+    
   };
 
-  const addProducts = async (name, description, category, price) => {
+
+  const addProducts = async (productName, description, category, price) => {
     try {
       const add = await axios.post(`${process.env.REACT_APP_API}/products`, {
-        name,
+        productName,
         description,
         category,
         price,
@@ -59,12 +61,14 @@ export const AdminContextProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+     
   };
 
-  const editProducts = async (name, description, category, price) => {
+
+  const editProducts = async (productName, description, category, price) => {
     try {
       const edit = await axios.put(`${process.env.REACT_APP_API}/products`, {
-        name,
+        productName,
         description,
         category,
         price,
@@ -74,11 +78,12 @@ export const AdminContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+  
 
-  const delProducts = async (name, description, category, price) => {
+  const delProducts = async (productName, description, category, price) => {
     try {
       const del = await axios.delete(`${process.env.REACT_APP_API}/products`, {
-        name,
+        productName,
         description,
         category,
         price,
@@ -88,6 +93,7 @@ export const AdminContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+ 
 
   return (
     <AdminContext.Provider

@@ -4,7 +4,6 @@ import Chat from "./Chat";
 import { useState } from "react";
 
 const socket = io.connect("https://matrixshop-chat-app.herokuapp.com/", {
-
   withCredentials: true,
 });
 

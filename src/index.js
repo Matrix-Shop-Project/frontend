@@ -3,21 +3,24 @@ import { createRoot } from "react-dom/client";
 import { UserContextProvider } from "./Context/UserContext";
 import { ProductContextProvider } from "./Context/ProductContext";
 import App from "./App";
-import { AdminContextProvider } from "./Context/AdminContext";
-import { CartProvider } from "react-use-cart";
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
+//  import { AdminContextProvider } from "./Context/AdminContext";
+
 
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <AdminContextProvider>
+    <Provider store={store}>
+     {/* <AdminContextProvider>  */}
       <UserContextProvider>
         <ProductContextProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
+          <App />
         </ProductContextProvider>
       </UserContextProvider>
-    </AdminContextProvider>
+    {/* </AdminContextProvider>  */}
+    </Provider>
   </React.StrictMode>
 );
