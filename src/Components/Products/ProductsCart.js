@@ -88,6 +88,24 @@ const ProductsCart = () => {
           </Button>
         </Card>
       ))}
+<<<<<<< HEAD
+=======
+      <div>
+        {products.map((p) => (
+          <div key={p.id}>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => addItem({ ...p, id: p._id })}
+            >
+              {" "}
+              {p.name} - Add to cart
+            </Button>
+
+          </div>
+        ))}
+      </div>
+>>>>>>> 32fb830a2e67866c56a679785d94fe4bd091143e
     </div>
   );
 };
