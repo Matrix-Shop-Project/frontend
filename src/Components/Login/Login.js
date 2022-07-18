@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "../../Context/UserContext";
 import { useNavigate } from 'react-router-dom';
 
@@ -18,42 +18,30 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 
-// function Copyright(props) {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
 const theme = createTheme();
 
-
 export const LoginForm = () => {
-  const nav = useNavigate();
+ const nav = useNavigate();
   const { signIn, user} = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+useEffect(() => { 
+  if(user){
+      console.log("IsUser")
+      if (user.role === 1) {
+        console.log("User is Admin")
+        nav('/admin')
+      } else {
+        nav('/account');
+   }
+  }
+}, [user, nav])
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log("User test role:", user.role)
-    if (user.role === 1) {
-      console.log("User is Admin")
-      nav('/admin')
-    } else {
-      nav('/account');
-    }
     console.log({
       email: data.get('email'),
       password: data.get('password')
-
     });
   };
 
@@ -138,7 +126,6 @@ export const LoginForm = () => {
             </Grid>
           </Box>
         </Box>
-        {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>
   );
