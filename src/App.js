@@ -22,6 +22,7 @@ import Bitcoin from "./Components/Bitcoin/Bitcoin";
 import AdminProducts from "./Components/Products/Admin/AdminProducts";
 import EditProduct from "./Components/Products/Admin/editproduct";
 import CreateProduct from "./Components/Products/Admin/createproduct"
+import Cookies from "./Components/Cookie/Cookie"
 
 
 
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/admin/createproduct" element={<CreateProduct />} />
           {/* <Route path="/admin/editproduct/:id" element={<AdminProducts />} /> */}
         </Routes>
+        <Cookies />
         <Footer />
       </Router>
     </div>
