@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createProduct, initProduct } from '../../../redux/action/products';
-import { setAlert } from '../../../redux/action/alert';
-import { Loading, Alert } from './utils';
-import { useUser } from '../../../Context/UserContext';
-import jwtdecode from 'jwt-decode'
+import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { createProduct, initProduct } from "../../../redux/action/products";
+import { setAlert } from "../../../redux/action/alert";
+import { Loading, Alert } from "./utils";
+import { useUser } from "../../../Context/UserContext";
+import jwtdecode from "jwt-decode";
 // import Upload from './upload';
-
 
 const CreateProduct = ({
   createProduct,
   alertContent,
   createSuccess,
   isLoading,
-  error
+  error,
 }) => {
   const nav = useNavigate();
   const { token, user } = useUser();
@@ -48,10 +47,12 @@ const CreateProduct = ({
     photo_base64: '',
     photo_file: null,
   });
+
   const { productName, category, description, price, photo_base64 } = productData;
 
-  const handleCreate = e => {
-    console.log("Code Token:", jwtdecode(token))
+
+  const handleCreate = (e) => {
+    console.log("Code Token:", jwtdecode(token));
     e.preventDefault();
     //console.log(photo_base64);
     createProduct({ productData: { productName, category, description, price, photo: photo_base64 }, token });
@@ -61,6 +62,8 @@ const CreateProduct = ({
   const handleChange = e => {
 
     setProductData({ ...productData, [e.target.name]: e.target.value });
+    console.log("Handlecreate:", productData.name);
+
   };
 
   const handleImageChange = async e => {
@@ -73,9 +76,8 @@ const CreateProduct = ({
   }
 
   const handleBack = () => {
-    nav('/admin');
+    nav("/admin");
   };
-
 
   const disableCreate = (productName, category, description) => {
     return !(
@@ -89,7 +91,6 @@ const CreateProduct = ({
       /^[a-zA-Z]+$/.test(description)
     );
   };
-
   return (
     token ? (
       user.role === 1 ? (
@@ -204,6 +205,7 @@ const CreateProduct = ({
                     </div>
                   </form>
                   <div className='alert-text'>{alertContent}</div>
+
                 </div>
               </div>
             )}
@@ -220,25 +222,22 @@ const CreateProduct = ({
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     alertContent: state.alert.alertContent,
     createSuccess: state.createProduct.createSuccess,
     isLoading: state.createProduct.isLoading,
-    error: state.createProduct.error
+    error: state.createProduct.error,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setAlert: alert => dispatch(setAlert(alert)),
+    setAlert: (alert) => dispatch(setAlert(alert)),
 
-    createProduct: data => dispatch(createProduct(data)),
-    initProduct: () => dispatch(initProduct())
+    createProduct: (data) => dispatch(createProduct(data)),
+    initProduct: () => dispatch(initProduct()),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProduct);
