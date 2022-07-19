@@ -48,9 +48,7 @@ const CreateProduct = ({
     photo_base64: '',
     photo_file: null,
   });
-
   const { productName, category, description, price, photo_base64 } = productData;
-
 
   const handleCreate = e => {
     console.log("Code Token:", jwtdecode(token))
