@@ -33,6 +33,11 @@ const Table = ({
       ))
     );
   };
+  const ImageBase64 = ({ data }) => (
+    <>
+      {data ? <img style={{ width: 150 }} alt="Avatar" src={data} /> : undefined}
+    </>
+  );
 
   return (
     <div>
@@ -86,7 +91,8 @@ const Table = ({
                 </td>
                 <td>
                   <div className='table-data'>
-                    <img src='{product.photo}' alt='Bild'></img></div>
+                    <ImageBase64 data={products.photo} alt='Bild' />
+                    </div>
                 </td>
                 <td>
                   <button

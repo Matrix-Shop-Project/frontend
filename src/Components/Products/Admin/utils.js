@@ -4,7 +4,7 @@ import { ReactComponent as Spinner } from '../../../sass/spinner-solid.svg';
 export const Loading = () => {
   return (
     <div className='loading'>
-      <i className='fas fa-spinner' />
+      <i className='fas fa-spinner' style={{weight: 450}}/>
       <Spinner />
       <h1>Loading...</h1>
     </div>
