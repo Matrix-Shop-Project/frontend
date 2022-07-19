@@ -5,20 +5,6 @@ export default function Bitcoin() {
   const [coins, setCoins] = useState([]);
   const [exchanges, setExchanges] = useState([]);
 
-  // const loadCoins = async () =>
-  //   await axios
-  //     .get("http://localhost:4000/coins")
-  //     .then(function (response) {
-  //       // handle success
-  //       console.log("Response coins", response);
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error);
-  //     })
-  //     .then(function () {
-  //       setCoins();
-  //     });
 
   useEffect(() => {
     const loadCoins = async () => {
@@ -45,10 +31,11 @@ export default function Bitcoin() {
   
   return (
     <div style={{ width: "80%", margin: "auto" }}>
-      {/* ,
-      {exchanges.map((ex, index) => {
+      {/* {JSON.stringify(exchanges.data)} */}
+      
+      {/* {exchanges.map((ex, index) => {
         return <div key={index}>{ex.exchange_id}</div>;
-      })} */}
+      })}   */}
       {/* {JSON.stringify(coins)} */}
       <h1 style={{ textAlign: "center" }}>100 Most Popular Coins</h1>
       <table style={{ width: "100%" }}>
