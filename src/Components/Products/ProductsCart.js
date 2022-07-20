@@ -32,7 +32,7 @@ const ProductsCart = () => {
           <CardMedia
             component="img"
             height="140"
-            image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+            image={p.photo}
             alt="green iguana"
           ></CardMedia>
 
