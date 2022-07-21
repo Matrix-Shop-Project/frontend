@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../sass/AdminProducts.scss'
 
 const Table = ({
   queryCur,
@@ -35,7 +36,7 @@ const Table = ({
   };
   const ImageBase64 = ({ data }) => (
     <>
-      {data ? <img style={{ width: 150 }} alt="Avatar" src={data} /> : undefined}
+      {data ? <img style={{ width: 100 }} alt="Avatar" src={data} /> : undefined}
     </>
   );
 
@@ -87,7 +88,7 @@ const Table = ({
                   <div className='table-data'>{products.description}</div>
                 </td>
                 <td>
-                  <div className='table-data'>{products.price}</div>
+                  <div className='table-data' style={{width: 100}}>{products.price} €</div>
                 </td>
                 <td>
                   <div className='table-data'>

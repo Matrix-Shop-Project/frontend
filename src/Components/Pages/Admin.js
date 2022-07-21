@@ -12,7 +12,7 @@ export default function UserAdmin() {
   return token ? (
     user.role === 1 ? (
       <>
-        <div className="products" style={{ marginTop: "150px" }}>
+        <div className="products" style={{ margin: "150px" }}>
           <h1>Admin</h1>
         </div>
         <Products />

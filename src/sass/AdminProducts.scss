@@ -32,7 +32,14 @@ code {
 }
 .table-data {
 	font-size: 22px;
+	padding: 5px;
 }
+
+#price + .table-data-price {
+	font-size: 22px;
+	width: 50px;
+}
+
 .page-bar {
 	width: 100%;
 	display: flex;
@@ -56,7 +63,7 @@ code {
 	display: flex;
 }
 .btn-middle {
-	width: 85%;
+	width: 70%;
 }
 .container {
 	position: relative;

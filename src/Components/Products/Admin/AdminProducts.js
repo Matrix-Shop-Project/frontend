@@ -112,8 +112,9 @@ const Products = ({
     token ? (
       user.role === 1 ? (
         <>
-    <div>
-      <strong className='navbar-brand'><h1 className='display-3 danger'>Products administration</h1></strong>      <div className='flex gap-3'>
+    <div style={{margin: 20}}>
+      <strong className='navbar-brand'><h1 className='display-3 danger'>Products administration</h1></strong>      
+      <div className='flex gap-3'>
         <form className='form-inline p-5' onSubmit={e => handleSearch(e)}>
           {' '}
           <input
