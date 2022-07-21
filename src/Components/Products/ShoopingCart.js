@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCart from './ProductCart';
+import ProductCart from './Warenkorb';
 
 const ShoopingCart = () => {
   return (

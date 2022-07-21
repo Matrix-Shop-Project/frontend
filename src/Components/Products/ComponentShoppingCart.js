@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+// import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -13,14 +13,8 @@ import { useProductContext } from "../../Context/ProductContext";
 import IconButton from "@mui/material/IconButton";
 import HoverRating from "./Rating";
 import "../../sass/ShoppingCart.scss";
-// import { useCart } from "react-use-cart";
-// import { useUser } from "../../Context/UserContext";
+
 import { useNavigate } from "react-router-dom";
-// import { getProduct } from "../../redux/action/products";
-//import { getProduct } from "../../redux/action/products";
-
-
-// import Card from 'react-bootstrap/Card';
 
 
 export default function ProductCard() {
@@ -28,15 +22,7 @@ export default function ProductCard() {
   const { products } = useProductContext();
   const nav = useNavigate();
 
-  const [productId, setProductId] = useState();
 
-  useEffect(() => {
-    const productenId = products.map((product) => (product._id));
-    setProductId(productenId)
-    // productId();
-  }, [products])
-
-  console.log("ProductId", productId)
   const handleProduct = (productId) => {
     nav(`/product/${productId}`)
     console.log("Handel:", productId)
@@ -44,7 +30,7 @@ export default function ProductCard() {
 
   const ImageBase64 = ({ data }) => (
     <>
-      {data ? <img style={{ width: 250 }} alt="Bild" src={data} /> : undefined}
+      {data ? <img alt="Bild" src={data} /> : undefined}
     </>
   );
   return (
@@ -74,8 +60,9 @@ export default function ProductCard() {
                   component="div"
                 >
                   {/* {Category} */}
-                  {product.category}
-                  <h2 style={{ color: "red" }}>{product.price} €</h2>
+                  <h4>{product.category}</h4>
+                  <h4>Price - {(product.price.toFixed(2))} €</h4>
+                  <h5 style={{ color: "red" }}><h4>10% Rabat neu eröfnung</h4>Statt: <h5 style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>{(((product.price)*10/100)+(product.price)).toFixed(2)} €</h5></h5>
                   <hr />
                 </Typography>
                 <Typography
@@ -87,7 +74,7 @@ export default function ProductCard() {
                   {product.description}
                 </Typography>
               </CardContent>
-              <CardActions>
+              {/* <CardActions>
                 <Button size="small">
                   <AddShoppingCartIcon />
                 </Button>
@@ -99,12 +86,10 @@ export default function ProductCard() {
               </CardActions>
               <CardContent>
                 <HoverRating />
-              </CardContent>
-
-              <Button variant="contained" color="success" onClick={handleProduct}>
+              </CardContent> */}
+              <Button variant="contained" color="success" onClick={()=>{handleProduct(product._id)}}>
                 Add to cart
               </Button>
-              {/* {product._id} */}
               </div>
           </div>
         </Card>

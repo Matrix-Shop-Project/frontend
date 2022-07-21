@@ -169,9 +169,9 @@ export default function Header() {
           <Button
             {...{
               // startIcon: <PersonOutlineIcon />,
-              key: 'Mein konto',
+              key: 'Warenkorb',
               color: "default",
-              to: '/account',
+              to: '/shoppingcard',
               component: RouterLink,
               className: menuButton,
             }}
