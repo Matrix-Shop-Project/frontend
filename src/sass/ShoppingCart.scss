@@ -3,16 +3,8 @@
 	gap: .5rem;
 	flex-direction: row;
 	margin: 0 auto;
-	background: white;
+	background: rgb(255, 250, 250);
 	border-radius: 5px;
-
-	.column-1 {
-  flex: 20%;
-	}
-
-	ComponentShoppingCart {
-		margin-top: 10px;
-	}
 
 	&__title {
 		font-size: 24px;
@@ -20,11 +12,23 @@
 		text-align: center;
 		padding: 20px 0;
 	}
+	&__cat {
+		font-size: 24px;
+		font-weight: bold;
+	}
 
-	&_item {
+	&__item {
 		display: flex;
 		order: -2;
 		padding: 30px 0 0 30px;
+
+		.column-1 {
+			flex:50%;
+			}
+		
+			.ComponentShoppingCart {
+				margin-top: 10px;
+			}
 
 		img {
 			width: 100px;
@@ -79,6 +83,14 @@
 				background: black;
 				color: white;
 			}
+		}
+	}
+	.Block {
+		display: flex;
+		max-width: fit-content;
+		flex-direction: row;
+		.column-2 {
+			flex-wrap: wrap;
 		}
 	}
 }

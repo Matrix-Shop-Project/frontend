@@ -39,7 +39,7 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/category" element={<Category />} />
           <Route path="/bitcoin" element={<Bitcoin />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/product/:productId" element={<Products />} />
           <Route path="/shoppingcard" element={<ShoppingCart />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
