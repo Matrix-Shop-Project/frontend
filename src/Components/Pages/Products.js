@@ -1,5 +1,6 @@
 import React from "react";
-import ProductsCart from "../Products/ProductsCart";
+import  ShoppingCard from "../Products/Cart/ShoppingCart";
+//import ProductsCard from "../Products/ProductsCard";
 
 export default function Products() {
   return (
@@ -7,7 +8,8 @@ export default function Products() {
       <div className="products" style={{ marginTop: "150px" }}>
         <h1>Products</h1>
       </div>
-      <ProductsCart />
+      {/* <ProductsCart /> */}
+      <ShoppingCard />
     </>
   );
 }

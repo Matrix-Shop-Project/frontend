@@ -1,49 +1,21 @@
 import React from "react";
 import ComponentShoppingCart from "../../Components/Products/ComponentShoppingCart";
+//import Container from 'react-bootstrap/Container';
 // import Footer from "../Footer/Footer";
 import "../../sass/ShoppingCart.scss";
 
 export default function Category() {
   return (
     <>
-    <div className="shoppingcard" style={{marginTop: "100px"}}>
+    <div style={{marginTop: "100px"}}>
       
-    <h1>Category 1</h1>
-      <div className="shopping-cart-container">
-      <div className="column-1">
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      </div>
-      <div className="column-1">
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
+    <h1>Angebote</h1>
+      
+       <div className="d-flex ">
+        <div className="d-flex flex-wrap"> 
       <ComponentShoppingCart />
       </div>
-      <div className="column-1">
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      </div>
-      </div>
-      <h1>Category 2</h1>
-      <div className="shopping-cart-container">
-      <div className="column-1">
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      </div>
-      <div className="column-1">
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      </div>
-      <div className="column-1">
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      <ComponentShoppingCart />
-      </div>
-      </div>
+      </div> 
     </div>
     </>
   );

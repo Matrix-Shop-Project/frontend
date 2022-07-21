@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -7,33 +8,66 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { useProductContext } from "../../Context/ProductContext";
+ import { useProductContext } from "../../Context/ProductContext";
 
 import IconButton from "@mui/material/IconButton";
 import HoverRating from "./Rating";
 import "../../sass/ShoppingCart.scss";
 import { useCart } from "react-use-cart";
+import { useUser } from "../../Context/UserContext";
+import { useNavigate, useParams } from "react-router-dom";
+import { getProduct } from "../../redux/action/products";
+//import { getProduct } from "../../redux/action/products";
 
-export default function MediaCard() {
+
+// import Card from 'react-bootstrap/Card';
+
+
+export default function ProductCard() {
+
+   const { products } = useProductContext();
+  const nav = useNavigate();
+// const { token } = useUser();
+  // const params = useParams();
+  // const id = params._id;
+
+  // useEffect(() => {
+    
+  //   if (id) {
+  //     console.log("Edit id:", id);
+  //     getProduct({ id, token });
+  //   }
+  // }, [id, token]);
+
+
+  const ImageBase64 = ({ data }) => (
+    <>
+      {data ? <img style={{ width: 250 }} alt="Bild" src={data} /> : undefined}
+    </>
+  );
+  
+
+
   // const [value, setValue] = React.useState(2);
-  const { addItem } = useCart();
+  //const { addItem } = useCart();
+// const [handleProduct, sethHandleProduct] = useState();
 
-  const { products } = useProductContext();
+// useEffect(() =>{
 
+  const handleProduct = (id) => {
+    nav(`/product/${id}`);
+  };
+// }, [nav, sethHandleProduct])
   return (
-    <div className="shopping-cart-container">
-      <div>
-        {products.map((p) => (
+    <>
+        { products.map((product => (
           <Card
-            key={p.id}
+            key={product._id}
             sx={{ maxWidth: 445, margin: "40px", padding: "20px" }}
           >
-            <CardMedia
-              component="img"
-              height="140"
-              image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-              alt="green iguana"
-            ></CardMedia>
+            <div className="shopping-cart-container">
+        <div className="column-1">
+            <ImageBase64 data={product.photo} alt="Bild" />
             <CardContent>
               <Typography
                 className="shopping-cart-container__title"
@@ -42,16 +76,17 @@ export default function MediaCard() {
                 component="div"
               >
                 {/* {Title} */}
-                {p.productName}
+                {product.productName}
               </Typography>
               <Typography
+              className="shopping-cart-container__cat"
                 variant="subtitle1"
                 color="text.secondary"
                 component="div"
               >
                 {/* {Category} */}
-                {p.category}
-                <h2 style={{ color: "red" }}>{p.price} €</h2>
+                {product.category}
+                <h2 style={{ color: "red" }}>{product.price} €</h2>
                 <hr />
               </Typography>
               <Typography
@@ -60,10 +95,7 @@ export default function MediaCard() {
                 component="p"
               >
                 {/* {Description} */}
-                {p.description}
-                Your perfect pack for everyday use and walks in the forest.
-                Stash your laptop (up to 15 inches) in the padded sleeve, your
-                everyday
+                {product.description}
               </Typography>
             </CardContent>
             <CardActions>
@@ -79,24 +111,12 @@ export default function MediaCard() {
             <CardContent>
               <HoverRating />
             </CardContent>
-            <button
-              style={{
-                width: "150px",
-                padding: "15px",
-                color: "white",
-                fontSize: "18px",
-                fontWeight: 400,
-                border: 0,
-                borderRadius: "5px",
-                backgroundColor: "#43A047",
-              }}
-              onClick={() => addItem({ ...p, id: p._id })}
-            >
+            <Button variant="contained" color="success" onClick={handleProduct}>
               Add to cart
-            </button>
-          </Card>
-        ))}
-      </div>
+            </Button></div>
     </div>
+          </Card>
+        )))}
+    </>
   );
 }
