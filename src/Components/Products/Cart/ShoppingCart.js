@@ -60,6 +60,7 @@ const Product = ({
     </>
   );
 
+
   const handleEdit = (e) => {
     console.log("Edit Token:", jwtdecode(token));
     e.preventDefault();
@@ -83,9 +84,11 @@ const Product = ({
   };
 
 
+
   const handleBack = () => {
     nav("/");
   };
+
   return token ? (
     
             <div>
@@ -125,6 +128,7 @@ const Product = ({
                   <hr />
                   <div className="btn-row" style={{padding: "0 50px 0"}}>
                     <div className="btn-left">
+
                       <button
                         className="btn btn-secondary"
                         onClick={handleBack}
@@ -132,14 +136,15 @@ const Product = ({
                         <i className="fas fa-arrow-left" /> Back
                       </button>
                     </div>
+
                     <div className="btn-middle" />
 
-                    
                   </div>
                 </form>
                 <div className="alert-text">{alertContent}</div>
               </div>
             </div>
+
   ) : (
     <div>
       <h1>Du bist nicht angemeldet!</h1>
@@ -168,4 +173,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
+

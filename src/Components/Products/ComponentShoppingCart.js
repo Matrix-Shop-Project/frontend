@@ -1,4 +1,5 @@
 import * as React from "react";
+
 // import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Card from "@mui/material/Card";
@@ -14,14 +15,15 @@ import IconButton from "@mui/material/IconButton";
 import HoverRating from "./Rating";
 import "../../sass/ShoppingCart.scss";
 
+
 import { useNavigate } from "react-router-dom";
+
 
 
 export default function ProductCard() {
 
   const { products } = useProductContext();
   const nav = useNavigate();
-
 
   const handleProduct = (productId) => {
     nav(`/product/${productId}`)
@@ -30,7 +32,9 @@ export default function ProductCard() {
 
   const ImageBase64 = ({ data }) => (
     <>
+
       {data ? <img alt="Bild" src={data} /> : undefined}
+
     </>
   );
   return (
@@ -60,9 +64,11 @@ export default function ProductCard() {
                   component="div"
                 >
                   {/* {Category} */}
+
                   <h4>{product.category}</h4>
                   <h4>Price - {(product.price.toFixed(2))} €</h4>
                   <h5 style={{ color: "red" }}><h4>10% Rabat neu eröfnung</h4>Statt: <h5 style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>{(((product.price)*10/100)+(product.price)).toFixed(2)} €</h5></h5>
+                  
                   <hr />
                 </Typography>
                 <Typography
@@ -74,7 +80,9 @@ export default function ProductCard() {
                   {product.description}
                 </Typography>
               </CardContent>
+
               {/* <CardActions>
+
                 <Button size="small">
                   <AddShoppingCartIcon />
                 </Button>
@@ -86,10 +94,12 @@ export default function ProductCard() {
               </CardActions>
               <CardContent>
                 <HoverRating />
+
               </CardContent> */}
               <Button variant="contained" color="success" onClick={()=>{handleProduct(product._id)}}>
                 Add to cart
               </Button>
+
               </div>
           </div>
         </Card>
