@@ -1,85 +1,69 @@
+import { Button } from "@mui/material";
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { Paper, Button, Typography } from "@mui/material";
-//import { green } from "@mui/material/colors";
-import { makeStyles } from "@mui/styles";
-//import Icon from "@mui/material/Icon";
 
-function Hero(props) {
+function Item({ item }) {
+  return (
+
+    <div style={{ width: "100%", height: "100%"}}>
+      {<img src={item.url} alt=""/>}
+      <br />
+          {<Button variant="contained" style={{
+              marginTop: "-20px",
+              
+      }}>{item.name}</Button>}
+      <br />
+      {item.description}
+
+    </div>
+  );
+}
+
+export default function HomeCarousel() {
   var items = [
     {
-      name: "Designer Jewellery",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing  ",
-      img_src: "./assets/image/slider/slider1.jpg"
+      url: `https://cdn.pixabay.com/photo/2017/02/24/03/35/engagement-ring-2093824_960_720.jpg`,
+
+      name: "Go to Product #1",
+
+      description: "1 - Probably the most random thing you have ever seen!",
     },
     {
-      name: "Designer Jewellery",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing ",
-      img_src: "./assets/image/slider/slider2.jpg"
+      url: `https://cdn.pixabay.com/photo/2017/02/24/03/35/engagement-ring-2093824_960_720.jpg`,
+
+      name: "Random Name #2",
+      description: "2- Hello World!",
     },
     {
-      name: "Designer Jewellery",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing ",
-      img_src: "./assets/image/slider/slider3.jpg"
-    }
+      url: `https://cdn.pixabay.com/photo/2017/02/24/03/35/engagement-ring-2093824_960_720.jpg`,
+      name: "Random Name #3",
+      description: "3 - Hello World!",
+
+    },
   ];
 
+  const [index, setIndex] = React.useState(0);
+
+  const handleChange = (cur, prev) => {
+    setIndex(cur);
+    console.log(cur, prev);
+  };
+
   return (
-    <Carousel height={474}
-      next={() => {
-        /* Do stuff */
-      }}
-      prev={() => {
-        /* Do other stuff */
-      }}
-    >
-      {items.map((item, i) => (
-        <Item key={i} item={item} />
-      ))}
-    </Carousel>
+    <div>
+      <Carousel
+        index={index}
+        onChange={handleChange}
+        interval={5000}
+        animation="slide"
+        indicators={false}
+        stopAutoPlayOnHover
+        swipe
+      >
+        {items.map((item, i) => (
+          <Item key={i} item={item} />
+        ))}
+      </Carousel>
+    </div>
   );
 }
-
-const useStyles = makeStyles({
-    root: {
-    position: "relative"
-  },
-  img_responsive: {
-    maxHeight: "560px",
-    width: "100%"
-  },
-  sec: {
-    position: "absolute",
-    top: "30%",
-    left: "10%",
-    color: "#fff"
-  }
-});
-
-function Item(props) {
-  const classes = useStyles();
-  return (
-    <Paper className={classes.root}>
-      <div className={classes.sec}>
-        <Typography variant="h3">{props.item.name}</Typography>
-        <Typography variant="subtitle1">{props.item.description}</Typography>
-        <Button
-          sx={{
-            ":hover": {
-              color: "white"
-            }
-          }}
-          color="info"
-          variant="contained"
-          className="CheckButton"
-        >
-          Shop Now
-        </Button>
-      </div>
-
-      <img className={classes.img_responsive} src={props.item.img_src} alt="imagen" />
-    </Paper>
-  );
-}
-
-export default Hero;
