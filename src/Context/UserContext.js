@@ -9,7 +9,7 @@ export const UserContextProvider = ({ children }) => {
   const [token, setToken] = useState(() => {
     
     const token = localStorage.getItem("token");
-    console.log("Swach")
+  
     return token || null;
   });
   // const decoded = jwt_decode(token);

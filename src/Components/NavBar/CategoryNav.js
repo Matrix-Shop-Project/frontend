@@ -33,7 +33,7 @@ export default function CategoryNav() {
           style={{ width: 150, marginTop: "4rem" }}
           label="Category"
         />
-        <figcaption>für Frauen</figcaption>
+        <figcaption>Damen</figcaption>
       </figure>
     </Link>
     <Link
@@ -51,7 +51,7 @@ export default function CategoryNav() {
           style={{ width: 150, marginTop: "4rem" }}
           label="Category"
         />
-        <figcaption>für Menner</figcaption>
+        <figcaption>Herren</figcaption>
       </figure>
       </Link>
       <Link
@@ -69,7 +69,7 @@ export default function CategoryNav() {
           style={{ width: 150, marginTop: "4rem" }}
           label="Category"
         />
-        <figcaption>für Kindern</figcaption>
+        <figcaption>Kinder</figcaption>
       </figure>
       </Link>
       <Link
@@ -87,10 +87,10 @@ export default function CategoryNav() {
           style={{ width: 150, marginTop: "4rem" }}
           label="Category"
         />
-        <figcaption>für zuHause</figcaption>
+        <figcaption>Haushalt</figcaption>
       </figure>
       </Link>
-      <Link
+      {/* <Link
           {...{
             component: RouterLink,
             to: "/category",
@@ -107,7 +107,7 @@ export default function CategoryNav() {
         />
         <figcaption>Elektronik</figcaption>
       </figure>
-      </Link>
+      </Link> */}
       <Link
           {...{
             component: RouterLink,

@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
-// import IconButton from '@mui/material/IconButton';
+ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -21,10 +21,12 @@ import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { HeadersData } from "./HeaderData";
 import { useUser } from '../../Context/UserContext';
+// import { CartContext } from "../../Context/CartContext"
 //import CategoryNav from "./CategoryNav";
 import Navbar from "./NavBar";
 import Logo from "./logo.png"
 import CategoryNav from "./CategoryNav";
+ import { useSelector } from "react-redux";
 
 
 const useStyles = makeStyles(() => ({
@@ -61,8 +63,9 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Header() {
-  const { token, user } = useUser();
+  const { token } = useUser();
   const { header, menuButton, toolbar } = useStyles();
+   const { cart } = useSelector(state => state.cart);
 
   const logout = () => {
     localStorage.removeItem('token');
@@ -150,6 +153,12 @@ export default function Header() {
       );
     });
   };
+  // const [cartItems] = useContext(CartContext)
+  //Loop through the items and find the total count
+  // const totalCount = cartItems.reduce(
+  //   (prevValue, currentValue) => prevValue + currentValue.count,
+  //   0
+  // )
 
   const loginButtons = () => {
     return (
@@ -177,9 +186,11 @@ export default function Header() {
             }}
           >
             Warenkorb
-            <StyledBadge badgeContent={4} color="secondary">
-              <ShoppingCartIcon />
-            </StyledBadge>
+            <IconButton>
+  <StyledBadge badgeContent={cart.length} color="secondary">
+    <ShoppingCartIcon />
+  </StyledBadge>
+</IconButton>
           </Button>
           <Button
             {...{
