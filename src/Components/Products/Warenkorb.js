@@ -10,7 +10,7 @@ const ProductCart = () => {
   const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem } =
     useCart();
 
-  if (isEmpty) return <p>Your cart is empty</p>;
+  if (isEmpty) return <p>Du hast noch nicht etwas gekauft!</p>;
 
   return (
     <div className="products-container">

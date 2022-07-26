@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCart from "../Products/ProductCart";
+import ProductCart from "../Products/Warenkorb";
 
 import MyAccount from "../Users/Account";
 

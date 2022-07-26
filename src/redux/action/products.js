@@ -210,9 +210,10 @@ export const getProduct = payload => dispatch => {
        'Authorization': payload.token
     }
   }
-  console.log("EditTokenProduct:", payload.token);
+  console.log("GetTokenProduct:", payload.token);
+  console.log("Redux ID2:", payload.id)
 
-  axios.get(`${process.env.REACT_APP_API}/products/${payload.id}`, payload.productData, config)
+  axios.get(`${process.env.REACT_APP_API}/products/product/${payload.id}`, payload.productData, config)
     .then(res => {
       const { _id, productName, category, description, price, photo } = res.data;
       const productData = { _id, productName, category, description, price, photo };
