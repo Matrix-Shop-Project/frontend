@@ -3,7 +3,8 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 
 import CardContent from "@mui/material/CardContent";
-
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
@@ -20,13 +21,17 @@ import { useUser } from "../../Context/UserContext"
 
 
 
+
+
 export default function ProductCard() {
 
   const { products } = useProductContext();
   const nav = useNavigate();
   const dispatch = useDispatch();
   const token = useUser();
- 
+
+
+
 
   const handleProduct = (productId) => {
     nav(`/product/${productId}`)
@@ -53,11 +58,30 @@ export default function ProductCard() {
   };
   return (
     <>
+    <nav>
+      
+    <Box
+      sx={{
+        width: 500,
+        height: 45,
+        // maxWidth: '100%',
+        position: "absolute",
+        margin: "-150px 0 0 40px",
+        display: "inline-flex",
+        gap: 1
+      }}
+    >
+      <TextField style ={{width: 400}} label="Search" id="search" />
+      {/* <Button variant="contained">Search</Button> */}
+      
+    </Box>
+</nav>
       {products.map(((product, index) => (
         <Card
           key={index}
           sx={{ maxWidth: 445, margin: "40px", padding: "20px" }}
         >
+          
           <div className="shopping-cart-container">
             <div className="column-1">
               <ImageBase64 data={product.photo} alt="Bild" />

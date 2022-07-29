@@ -1,15 +1,15 @@
 import React from "react";
 import ShoopingCart from "../Products/ShoopingCart";
-import { CartProvider } from "react-use-cart";
+
 
 export default function ShoppingCart() {
   return (
     <>
     <div className="category">
-        <h1>Warenkorb</h1>
-        <CartProvider>
+        <h2>Warenkorb</h2>
+        <hr className="bg-success"/>
         <ShoopingCart/>
-        </CartProvider>
+
     </div>
     </>
   );

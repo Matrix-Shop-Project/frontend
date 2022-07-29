@@ -113,7 +113,7 @@ const Products = ({
       user.role === 1 ? (
         <>
     <div style={{margin: 20}}>
-      <strong className='navbar-brand'><h1 className='display-3 danger'>Products administration</h1></strong>      
+         
       <div className='flex gap-3'>
         <form className='form-inline p-5' onSubmit={e => handleSearch(e)}>
           {' '}
@@ -129,7 +129,7 @@ const Products = ({
           {/* <input type='submit' value='Search' /> */}
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> </form>
       </div>
-      <nav className='navbar navbar-light bg-light mb-2'></nav>
+      <nav className='navbar navbar-light bg-light mb-2'><strong className='navbar-brand'><h3 className='danger'>Products administration</h3></strong>   </nav>
       <div>
         {isLoading ? (
           <Loading />

@@ -39,6 +39,12 @@ const Table = ({
       {data ? <img style={{ width: 100 }} alt="Avatar" src={data} /> : undefined}
     </>
   );
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('de-DE', {
+      style: 'currency',
+      currency: 'EUR',
+    }).format(price);
+  };
 
   return (
     <div>
@@ -88,7 +94,7 @@ const Table = ({
                   <div className='table-data'>{products.description}</div>
                 </td>
                 <td>
-                  <div className='table-data' style={{width: 100}}>{products.price} €</div>
+                  <div className='table-data' style={{width: 100}}>{formatPrice(products.price)}</div>
                 </td>
                 <td>
                   <div className='table-data'>

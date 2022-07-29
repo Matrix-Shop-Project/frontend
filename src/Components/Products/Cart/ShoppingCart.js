@@ -5,7 +5,7 @@ import { connect, useDispatch } from "react-redux";
 import { getProduct } from "../../../redux/action/products";
 import { setAlert } from "../../../redux/action/alert";
 // import { Loading } from "./utils";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useUser } from "../../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 //  import { useCart } from "react-use-cart";
@@ -103,13 +103,13 @@ const Product = ({
       <div className="container" style={{ width: 900 }}>
         <form>
           <div key={id}>
+            <div className="form-group">
+              <strong><a href="/">Category</a> /  <Link to={`/category/${category}`}>{category}</Link></strong>
+            </div>
             <div><h2>{productName}</h2>
               <hr />
             </div>
-            <div className="form-group">
-              <h3>{category}</h3>
-
-            </div>
+            
             <div className="form-group" style={{ width: 700 }}>
               {description}
 
@@ -161,10 +161,10 @@ const Product = ({
     </div>
 
  
-    <div>
+    {/* <div>
       <h1>Du bist nicht angemeldet!</h1>
 
-    </div>
+    </div> */}
   </>)
 };
 

@@ -10,6 +10,7 @@ import Products from "./Components/Pages/Products";
 import Impressum from "./Components/Pages/Impressum";
 import Login from "./Components/Pages/Login";
 import Category from "./Components/Pages/Category";
+import Damen from "./Components/Pages/category/Damen"
 import ShoppingCart from "./Components/Pages/ShoppingCart";
 import Contact from "./Components/Pages/Contact";
 import Header from "./Components/NavBar/Header";
@@ -37,7 +38,8 @@ export default function App() {
           <Route path="/products/*"></Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/category" element={<Category />} />
+          <Route path="/category/*" element={<Category />} />
+          <Route path="/category/damen" element={<Damen />} />
           <Route path="/bitcoin" element={<Bitcoin />} />
           <Route path="/product/:productId" element={<Products />} />
           <Route path="/shoppingcard" element={<ShoppingCart />} />
