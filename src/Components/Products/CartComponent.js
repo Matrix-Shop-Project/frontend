@@ -39,12 +39,17 @@ const CartComponent = ({
 
 
   const handleSort = e => {
+
     if (e.target.category === actAttr) {
+
       setSortType((sortType + 1) % 3);
     } else {
       setSortType(1);
     }
-    setActAttr(e.target.category);
+
+
+    setActAttr(e.target.id);
+
   };
 
 

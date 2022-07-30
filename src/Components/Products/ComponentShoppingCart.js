@@ -36,6 +36,7 @@ export default function ProductCard() {
 
 
 
+
   const handleProduct = (productId) => {
     nav(`/product/${productId}`)
     console.log("Handel:", productId)
@@ -78,6 +79,7 @@ export default function ProductCard() {
         {/* </Box>
       </nav> */}
       {/* <Search /> */}
+
       {products.map(((product, index) => (
         <Card
           key={index}
