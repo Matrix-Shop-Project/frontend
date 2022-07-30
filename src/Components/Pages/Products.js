@@ -8,8 +8,6 @@ import { useUser } from "../../Context/UserContext";
 
 
 
-import { useUser } from "../../Context/UserContext";
-
 
 export default function Products() {
 const token = useUser();
