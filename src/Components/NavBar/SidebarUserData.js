@@ -1,11 +1,11 @@
 import React from "react";
 
-import * as FaIcons from "react-icons/fa";
+//import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as MdIcons from "react-icons/md";
-import * as BiIcons from "react-icons/bi";
-import * as CgIcons from "react-icons/cg";
+//import * as BiIcons from "react-icons/bi";
+//import * as CgIcons from "react-icons/cg";
 
 export const SidebarUserData = [
   {
@@ -14,12 +14,12 @@ export const SidebarUserData = [
     icon: <AiIcons.AiFillHome />,
     cName: "nav-text",
   },
-  {
-    title: "Products",
-    path: "/products",
-    icon: <FaIcons.FaCartPlus />,
-    cName: "nav-text",
-  },
+  // {
+  //   title: "Products",
+  //   path: "/products",
+  //   icon: <FaIcons.FaCartPlus />,
+  //   cName: "nav-text",
+  // },
   {
     title: "Contact",
     path: "/contact",

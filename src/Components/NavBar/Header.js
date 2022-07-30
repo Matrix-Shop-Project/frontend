@@ -27,6 +27,7 @@ import Navbar from "./NavBar";
 import Logo from "./logo.png"
 import CategoryNav from "./CategoryNav";
  import { useSelector } from "react-redux";
+import SplitButton from "./Split";
 
 
 const useStyles = makeStyles(() => ({
@@ -56,6 +57,11 @@ const useStyles = makeStyles(() => ({
   toolbar: {
     display: "flex",
     justifyContent: "space-between",
+    fontFamily: "Work Sans, sans-serif !important",
+    fontWeight: 400,
+    fontSize: 18,
+    textTransform: 'capitalize !important',
+    color: "black",
   },
   drawerContainer: {
     padding: "20px 30px",
@@ -99,8 +105,12 @@ export default function Header() {
   const displayDesktop = () => {
     return (
       <Toolbar className={toolbar}>
-        {femmecubatorLogo}
-        <div>{getMenuButtons()}{loginButtons()}</div>
+        {femmecubatorLogo} 
+        
+          {getMenuButtons()}
+          
+        <SplitButton />{loginButtons()}
+        
         {femmecubatorMenu}
       </Toolbar>
     );

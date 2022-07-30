@@ -9,7 +9,7 @@ import shoppingMan from "./lottie/man-account-icon.json";
 import shoppingHome from "./lottie/home-icon.json";
 import shoppingKind from "./lottie/kids-wave.json";
 import shoppingBitcoin from "./lottie/bitcoin-wallet.json";
-import shoppingElektro from "./lottie/laptop-icon.json";
+//import shoppingElektro from "./lottie/laptop-icon.json";
 
 import "../../sass/NavCategory.scss"
 
@@ -21,7 +21,7 @@ export default function CategoryNav() {
       <Link
           {...{
             component: RouterLink,
-            to: "/category",
+            to: "/category/damen",
             style: { textDecoration: "none" },
             key: "2cat",
           }}
@@ -39,7 +39,7 @@ export default function CategoryNav() {
     <Link
           {...{
             component: RouterLink,
-            to: "/category",
+            to: "/category/herren",
             style: { textDecoration: "none" },
             key: "3cat",
           }}
@@ -57,7 +57,7 @@ export default function CategoryNav() {
       <Link
           {...{
             component: RouterLink,
-            to: "/category",
+            to: "/category/kinder",
             style: { textDecoration: "none" },
             key: "4cat",
           }}
@@ -75,7 +75,7 @@ export default function CategoryNav() {
       <Link
           {...{
             component: RouterLink,
-            to: "/category",
+            to: "/category/haushalt",
             style: { textDecoration: "none" },
             key: "1cat",
           }}

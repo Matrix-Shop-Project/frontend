@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { initProduct, initEdit, deleteProduct, setProductList } from '../../redux/action/products'
-import { Loading, Alert } from './utils';
-import Cart from './cart';
-import '../../sass/AdminProducts.scss'
+import { initProduct, initEdit, deleteProduct, setProductList } from '../../../../redux/action/products'
+import { Loading, Alert } from './HerrenUtils';
+import Cart from './HerrenCart';
+import '../../../../sass/AdminProducts.scss'
 
-const CartComponent = ({
+const CategoryHerren = ({
   products,
   setProductList,
   initProduct,
@@ -150,4 +150,4 @@ const mapStateToDispatch = dispatch => {
 export default connect(
   mapStateToProps,
   mapStateToDispatch
-)(CartComponent);
+)(CategoryHerren);
