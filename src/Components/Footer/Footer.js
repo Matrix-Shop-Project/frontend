@@ -7,11 +7,12 @@ const Footer = () => {
       <h1 style={{ color: "green", textAlign: "left"}}>
         Matrix Shop
       </h1>
+      <p>Dies ist ein <strong>Demoshop</strong> Projektarbeit für <a href="https://digitalcareerinstitute.org/">Digital Career Institute</a> Final Project — Bestellungen werden nicht ausgeführt.</p>
       <div className="Container">
         <div className="Row">
           <div className="Column">
             <div className="Heading">Über uns</div>
-            <p><a href="/">Orhan</a>  & <a href="/">Vens</a> </p>
+            <p><a href="https://github.com/OrhanKadirov">Orhan</a>  & <a href="https://github.com/venskolev">Vens</a> </p>
             <div className="FooterLink">
               <a href="/impressum">Impressum</a>
               </div>

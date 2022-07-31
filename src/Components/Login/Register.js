@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { useState } from "react";
 import { useUser } from "../../Context/UserContext";
+import { useNavigate } from 'react-router-dom';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+//import FormControlLabel from '@mui/material/FormControlLabel';
+//import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -15,7 +16,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Footer from '../Footer/Footer';
+//import Footer from '../Footer/Footer';
 
 
 // function Copyright(props) {
@@ -39,6 +40,8 @@ export const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const nav = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -46,6 +49,7 @@ export const Register = () => {
       email: data.get('email'),
       password: data.get('password'),
     });
+    nav("/login");
   };
 
   return (
@@ -64,7 +68,7 @@ export const Register = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Anmeldung
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -75,7 +79,7 @@ export const Register = () => {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="Vorname"
                   value={firstName}
                   autoFocus
                   onChange={(e) => {
@@ -88,7 +92,7 @@ export const Register = () => {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="Nachname"
                   value={lastName}
                   name="lastName"
                   autoComplete="family-name"
@@ -102,7 +106,7 @@ export const Register = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="E-Mail Addresse"
                   name="email"
                   autoComplete="email"
                   onChange={(e) => {
@@ -115,7 +119,7 @@ export const Register = () => {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Kennwort"
                   value={password}
                   type="password"
                   id="password"
@@ -126,10 +130,10 @@ export const Register = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormControlLabel
+                {/* <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
                   label="I want to receive inspiration, marketing promotions and updates via email."
-                />
+                /> */}
               </Grid>
             </Grid>
             <Button
@@ -141,12 +145,12 @@ export const Register = () => {
                 signUp(firstName, lastName, email, password);
               }}
             >
-              Sign Up
+              Anmelden
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">
-                  Already have an account? Sign in
+                  Du hast bereits ein Konto? Einloggen
                 </Link>
               </Grid>
             </Grid>

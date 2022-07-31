@@ -7,8 +7,8 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+//import FormControlLabel from "@mui/material/FormControlLabel";
+//import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -61,7 +61,7 @@ useEffect(() => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Anmelden
+          Einloggen
           </Typography>
           <Box
             component="form"
@@ -74,7 +74,7 @@ useEffect(() => {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="E-Mail Addresse"
               name="email"
               value={email}
               autoComplete="email"
@@ -88,7 +88,7 @@ useEffect(() => {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Kennwort"
               type="password"
               id="password"
               value={password}
@@ -97,10 +97,10 @@ useEffect(() => {
                 setPassword(e.target.value);
               }}
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
@@ -110,16 +110,16 @@ useEffect(() => {
                 signIn(email, password);
               }}
             >
-              Login
+              Einloggen
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                {/* <Link href="#" variant="body2">
                   Forgot password?
-                </Link>
+                </Link> */}
               </Grid>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link href="/signup" variant="body">
                   {"Du hast kein Konto? Anmeldung"}
                 </Link>
               </Grid>

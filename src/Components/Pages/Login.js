@@ -8,7 +8,6 @@ export default function Login() {
   return (
     <>
     <div className="login">
-      Das ist Login form bitte einlogen!
       <LoginForm />
     </div>
 

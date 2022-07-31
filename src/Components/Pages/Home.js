@@ -8,7 +8,7 @@ import CartComponent from "../Products/CartComponent";
 
 
 
-import CartComponent from "../Products/CartComponent";
+
 
 
 export default function Home() {
