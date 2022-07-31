@@ -47,6 +47,7 @@ const CartComponent = ({
       setSortType(1);
     }
 
+
     setActAttr(e.target.id);
 
   };
