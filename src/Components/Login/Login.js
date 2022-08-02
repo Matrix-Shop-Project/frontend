@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useUser } from "../../Context/UserContext";
 import { useNavigate } from 'react-router-dom';
 
@@ -17,25 +17,65 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Zoom } from 'react-toastify';
+
 
 const theme = createTheme();
 
 export const LoginForm = () => {
- const nav = useNavigate();
-  const { signIn, user} = useUser();
+  const nav = useNavigate();
+
+  const emailRef = useRef();
+
+
+  const { signIn, user, errMsg } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-useEffect(() => { 
-  if(user){
+
+  const toastId = useRef(null);
+
+ 
+
+  const CloseButton = ({ closeToast }) => (
+    
+    <i
+      className="material-icons"
+      onClick={closeToast}
+    >
+      OK.
+    </i>
+  );
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, [])
+
+  useEffect(() => {
+    if (user) {
       console.log("IsUser")
       if (user.role === 1) {
         console.log("User is Admin")
         nav('/admin')
       } else {
         nav('/account');
-   }
-  }
-}, [user, nav])
+      }
+    }
+    if (errMsg === true) {
+      console.log(errMsg)
+
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.error("E-Mail-Adresse / Passwort falsch.  Bitte versuchen es erneut.", {
+          autoClose: false,
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme: "colored"
+        })
+      }
+    }
+  }, [user, nav, errMsg])
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -61,7 +101,7 @@ useEffect(() => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-          Einloggen
+            Einloggen
           </Typography>
           <Box
             component="form"
@@ -74,10 +114,11 @@ useEffect(() => {
               required
               fullWidth
               id="email"
+              ref={emailRef}
               label="E-Mail Addresse"
               name="email"
               value={email}
-              autoComplete="email"
+              autoComplete="off"
               autoFocus
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -92,7 +133,7 @@ useEffect(() => {
               type="password"
               id="password"
               value={password}
-              autoComplete="current-password"
+             // autoComplete="current-password"
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
@@ -126,6 +167,10 @@ useEffect(() => {
             </Grid>
           </Box>
         </Box>
+        <ToastContainer
+         closeButton={CloseButton} 
+         transition={Zoom} 
+         style={{ width: "300px", bottom: "25rem" }} />
       </Container>
     </ThemeProvider>
   );

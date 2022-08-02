@@ -48,6 +48,7 @@
     "react-scripts": "5.0.1",
     "react-scroll-to-bottom": "^4.2.0",
     "react-shopping-cart": "^1.9.5",
+    "react-toastify": "^9.0.7",
     "react-ui-cards": "^3.0.0",
     "react-use-cart": "^1.13.0",
     "redux-devtools-extension": "^2.13.9",

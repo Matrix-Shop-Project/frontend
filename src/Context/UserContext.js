@@ -13,6 +13,7 @@ export const UserContextProvider = ({ children }) => {
     return token || null;
   });
   // const decoded = jwt_decode(token);
+    const [errMsg, setErrMsg] = useState(false);
 
   useEffect(() => {
     // let timeoutHandle = 0;
@@ -23,19 +24,22 @@ export const UserContextProvider = ({ children }) => {
       //   setToken(null);
       //   console.log("timeoutHandle:")
       // }, 100000);
-      
+
     } else {
       localStorage.removeItem("token");
+      
     }
     // return () => {
     //   if (timeoutHandle !== 0) {
     //     clearTimeout(timeoutHandle);
     //   }
     // };
+    
   }, [token]);
 
 console.log("UserContext Token:", token)
 
+      
 
   const signIn = async (email, password) => {
     try {
@@ -51,6 +55,7 @@ console.log("UserContext Token:", token)
       setToken(token);
     } catch (err) {
       console.log(err);
+      setErrMsg(true);
     }
   };
 
@@ -113,7 +118,8 @@ console.log("UserContext Token:", token)
         signUp,
         signOut,
         userAdmin,
-        role
+        role,
+        errMsg
       }}
     >
       {children}
