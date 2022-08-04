@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "../../Components/Carousel/Carousel";
-import Category from "./Category";
+//import Category from "./Category";
 import "../../sass/Pages.scss";
 import { useUser } from "../../Context/UserContext";
 

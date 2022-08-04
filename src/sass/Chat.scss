@@ -23,18 +23,63 @@ $background-color_2: cornflowerblue;
 	bottom: 0;
 	right: 0.1em;
 }
+@media (min-width:360px)  { 
+	/* smartphones, iPhone, portrait 480x320 phones */
+	.ChatApp {
+		width: 16, 5vw;
+		background: #FFDEA7;
+		margin: 0 3rem 2rem 0;
+		padding: 0 0.5em 0.5em 0.5em;
+		border-radius: 0.5em;
+		color: $color_1;
+		font-family: $font-family_1;
+		display: flex;
+		align-items: flex-end;
+		position: fixed;
+		z-index: 999;
+		bottom: 0;
+	}
+ }
+@media (min-width:481px)  {
+	 /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+	 .ChatApp {
+		width: 16, 5vw;
+		background: #FFDEA7;
+		margin: 0 3rem 2rem 0;
+		padding: 0 0.5em 0.5em 0.5em;
+		border-radius: 0.5em;
+		color: $color_1;
+		font-family: $font-family_1;
+		display: flex;
+		align-items: flex-end;
+		position: fixed;
+		z-index: 999;
+		bottom: 0;
+	}
+	}
+@media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px)  {
+	 /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+	}
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
 .joinChatContainer {
 	display: flex;
 	flex-direction: column;
-	text-align: center;
-	width: 300px;
+	justify-content: center;
+	text-align: left;
+	width: 225px;
 	padding: 5px;
 	h3 {
 		font-size: 1.5rem;
 		padding-top: 1rem;
+		text-align: center;
+	}
+	span {
+		font-size: 12px;
 	}
 	input {
-		width: 225px;
+		width: 175px;
 		height: 40px;
 		margin: 7px;
 		border: 2px solid #43a047;
@@ -43,8 +88,8 @@ $background-color_2: cornflowerblue;
 		font-size: 16px;
 	}
 	button {
-		width: 225px;
-		height: 50px;
+		width: 175px;
+		height: 40px;
 		margin: 7px;
 		border: none;
 		border-radius: 5px;

@@ -1,14 +1,16 @@
 .Category {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
+  // display: flex;
+  // flex-direction: row;
+   justify-content: center;
+  // gap: 1rem;
 
   figure {
     display: flex;
     flex-direction: column;
-    // height: 75px;
-    // max-width: 4rem;
+     height: 25vh;
+    //  max-width: 25vw;
+    //  gap: 2rem;
+
     figcaption {
       display: flex;
       justify-content: center;
@@ -16,13 +18,13 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-weight: bold;
       color: #333232;
-    }
+    
     &:hover {
       background-color: rgba(245, 243, 243, 0.664);
       border-radius: 5%;
       figcaption {
         color: #1976d2;
-      }
+      }}
     }
   }
 }

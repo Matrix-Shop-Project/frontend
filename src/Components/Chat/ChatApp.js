@@ -36,7 +36,6 @@ function ChatApp() {
             <FormGroup>
               <h3>Suport Chat</h3>
               <span>Hi! {token.user.name}</span>
-              <hr />
               <FormControlLabel
                 control={<Checkbox
                   onChange={() => {
@@ -53,7 +52,6 @@ function ChatApp() {
 
             <FormGroup>
               <h3>Suport Chat</h3>
-              <hr />
               <FormControlLabel
                 control={<Checkbox
                   onChange={(e) => {
@@ -62,7 +60,7 @@ function ChatApp() {
                 />}
                 label="Ich stimme den AGB und der Datenschutzerklärung zu"
               />
-              <div>
+              <div className="d-flex flex-column justify-content-center align-items-center">
                 <input
                   type="text"
                   placeholder="Your Name"

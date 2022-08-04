@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
- import IconButton from '@mui/material/IconButton';
+import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -17,7 +17,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { HeadersData } from "./HeaderData";
 import { useUser } from '../../Context/UserContext';
@@ -26,7 +26,7 @@ import { useUser } from '../../Context/UserContext';
 import Navbar from "./NavBar";
 import Logo from "./logo.png"
 import CategoryNav from "./CategoryNav";
- import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SplitButton from "./Split";
 
 
@@ -46,6 +46,9 @@ const useStyles = makeStyles(() => ({
     textAlign: "left",
     alignItems: "center",
     height: "50px",
+    "@media (max-width: 900px)": {
+      marginLeft: "5px"
+    }
   },
   menuButton: {
     fontFamily: "Work Sans, sans-serif",
@@ -53,6 +56,9 @@ const useStyles = makeStyles(() => ({
     size: "12px",
     marginLeft: "38px",
     fontSize: "12px",
+    "@media (max-width: 900px)": {
+      marginLeft: 0
+    }
   },
   toolbar: {
     display: "flex",
@@ -62,6 +68,10 @@ const useStyles = makeStyles(() => ({
     fontSize: 18,
     textTransform: 'capitalize !important',
     color: "black",
+    "@media (max-width: 900px)": {
+      justifyContent: "unset",
+      gap: 0
+    }
   },
   drawerContainer: {
     padding: "20px 30px",
@@ -71,46 +81,20 @@ const useStyles = makeStyles(() => ({
 export default function Header() {
   const { token } = useUser();
   const { header, menuButton, toolbar } = useStyles();
-   const { cart } = useSelector(state => state.cart);
+  const { cart } = useSelector(state => state.cart);
 
   const logout = () => {
     localStorage.removeItem('token');
     window.location.href = "/";
   };
 
-  const [state, setState] = useState({
-    mobileView: false,
-    drawerOpen: false,
-  });
-
-  const { drawerOpen } = state;
-
-  useEffect(() => {
-    const setResponsiveness = () => {
-      return window.innerWidth < 900
-        ? setState((prevState) => ({ ...prevState, mobileView: true }))
-        : setState((prevState) => ({ ...prevState, mobileView: false }));
-    };
-
-    setResponsiveness();
-
-    window.addEventListener("resize", () => setResponsiveness());
-
-    return () => {
-      window.removeEventListener("resize", () => setResponsiveness());
-    };
-  }, []);
-
-
   const displayDesktop = () => {
     return (
       <Toolbar className={toolbar}>
-        {femmecubatorLogo} 
-        
-          {getMenuButtons()}
-          
-        <SplitButton />{loginButtons()}
-        
+        {femmecubatorLogo}
+        {getMenuButtons()}
+        <SplitButton />
+        {loginButtons()}
         {femmecubatorMenu}
       </Toolbar>
     );
@@ -163,12 +147,6 @@ export default function Header() {
       );
     });
   };
-  // const [cartItems] = useContext(CartContext)
-  //Loop through the items and find the total count
-  // const totalCount = cartItems.reduce(
-  //   (prevValue, currentValue) => prevValue + currentValue.count,
-  //   0
-  // )
 
   const loginButtons = () => {
     return (
@@ -187,7 +165,6 @@ export default function Header() {
         <>
           <Button
             {...{
-              // startIcon: <PersonOutlineIcon />,
               key: 'Warenkorb',
               color: "default",
               to: '/shoppingcard',
@@ -197,23 +174,22 @@ export default function Header() {
           >
             Warenkorb
             <IconButton>
-  <StyledBadge badgeContent={cart.length} color="secondary">
-    <ShoppingCartIcon />
-  </StyledBadge>
-</IconButton>
+              <StyledBadge badgeContent={cart.length} color="secondary">
+                <ShoppingCartIcon />
+              </StyledBadge>
+            </IconButton>
           </Button>
           <Button
             {...{
-              // startIcon: <PersonOutlineIcon />,
               key: 'Mein konto',
               color: "default",
               to: '/account',
               component: RouterLink,
               className: menuButton,
             }}
-          >Mein Konto 
+          >Mein Konto
             <Stack direction="row" spacing={2}>
-              <Avatar alt="Travis Howard" src="https://mui.com/static/images/avatar/2.jpg" style={{marginLeft: 5}}/>
+              <Avatar alt="Travis Howard" src="https://mui.com/static/images/avatar/2.jpg" style={{ marginLeft: 5 }} />
             </Stack>
           </Button>
           <Button
@@ -235,11 +211,6 @@ export default function Header() {
   return (
     <header>
       <AppBar className={header}>{displayDesktop()}</AppBar>
-
-      {/* <div>{displayMobile()}</div>  */}
-
-      {/* <Search /> */}
-
       <CategoryNav />
 
     </header>

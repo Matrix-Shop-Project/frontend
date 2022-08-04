@@ -28,6 +28,8 @@ import AdminProducts from "./Components/Products/Admin/AdminProducts";
 import EditProduct from "./Components/Products/Admin/editproduct";
 import CreateProduct from "./Components/Products/Admin/createproduct"
 import Cookies from "./Components/Cookie/Cookie"
+import Shipping from "./Components/Products/Shipping";
+import Payment from "./Components/Products/Payment";
 
 
 
@@ -50,6 +52,10 @@ export default function App() {
           <Route path="/bitcoin" element={<Bitcoin />} />
           <Route path="/product/:productId" element={<Products />} />
           <Route path="/shoppingcard" element={<ShoppingCart />} />
+          <Route path="/shipping" element={<Shipping />} />
+          <Route path="/payment" element={<Payment />} />
+
+
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/chat" element={<ChatApp />} /> 

@@ -2,18 +2,22 @@ import { Button, Typography } from "@mui/material";
 import { current } from "@reduxjs/toolkit";
 //import { margin } from "@mui/system";
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ADD_TO_CART } from "../../redux/constants/cartConstants";
 import { deleteFromCart } from "../../redux/action/cartActions";
 import "../../sass/ShoppingCart.scss";
+import { useUser } from "../../Context/UserContext";
 
 
 const ProductCart = () => {
   const { cart } = useSelector(state => state.cart);
 
   const dispatch = useDispatch();
+  const token = useUser();
+  const nav = useNavigate();
 
   const ImageBase64 = ({ data }) => (
     <>
@@ -48,6 +52,14 @@ const ProductCart = () => {
       payload: cart,
     })
 
+  }
+  // console.log(token)
+  const handleCheckout = () => {
+    if (token) {
+      nav('/shipping')
+    } else {
+      nav('/login')
+    }
   }
 
   return (
@@ -116,7 +128,7 @@ const ProductCart = () => {
                   currentSum + currentCartItem.count * currentCartItem.price, 0
               ))}
             </p>
-            <Button variant="contained" className="btn btn-dark btn-large btn-block mb-5 py-2"> Bezahlen </Button>
+            <Button variant="contained" className="btn btn-dark btn-large btn-block mb-5 py-2" onClick={handleCheckout}> Bezahlen </Button>
           </div>
         </div>
       </div>

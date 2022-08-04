@@ -115,7 +115,7 @@ const CartComponent = ({
         {isLoading ? (
           <Loading />
         ) : (
-          <div className='container-fluid'>
+          <div className='container-fluid pl-1'>
             <Cart
               queryCur={queryCur}
               sortType={sortType}

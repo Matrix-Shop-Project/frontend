@@ -16,7 +16,7 @@ import "../../sass/NavCategory.scss"
 export default function CategoryNav() {
   return (
     <>
-    <div className="Category">
+    <div className="Category d-flex flex-wrap gap-1 mt-5">
     
       <Link
           {...{
@@ -30,7 +30,7 @@ export default function CategoryNav() {
         <Lottie
           animationData={shoppingWoman}
           loop={true}
-          style={{ width: 150, marginTop: "4rem" }}
+          style={{ width: 100, gap: 1 }}
           label="Category"
         />
         <figcaption>Damen</figcaption>
@@ -48,7 +48,7 @@ export default function CategoryNav() {
         <Lottie
           animationData={shoppingMan}
           loop={true}
-          style={{ width: 150, marginTop: "4rem" }}
+          style={{ width: 100, gap: 1 }}
           label="Category"
         />
         <figcaption>Herren</figcaption>
@@ -66,7 +66,7 @@ export default function CategoryNav() {
         <Lottie
           animationData={shoppingKind}
           loop={true}
-          style={{ width: 150, marginTop: "4rem" }}
+          style={{ width: 100, gap: 1 }}
           label="Category"
         />
         <figcaption>Kinder</figcaption>
@@ -84,7 +84,7 @@ export default function CategoryNav() {
         <Lottie
           animationData={shoppingHome}
           loop={true}
-          style={{ width: 150, marginTop: "4rem" }}
+          style={{ width: 100, gap: 1 }}
           label="Category"
         />
         <figcaption>Haushalt</figcaption>
@@ -120,7 +120,7 @@ export default function CategoryNav() {
         <Lottie
           animationData={shoppingBitcoin}
           loop={true}
-          style={{ width: 150, marginTop: "4rem" }}
+          style={{ width: 100, gap: 1 }}
           label="Category"
         />
         <figcaption>Bitcoin</figcaption>
