@@ -1,24 +1,30 @@
-import { ADD_COMMENT, DELETE_COMMENT } from "../constants/commentsConstants";
-const INITIAL_STATE = {
-  comment: []
-}
+const initState = {
+  comments: [],
+  error: null,
+  isLoading: false,
+  createSuccess: false
+};
 
-
-
-const commentsReducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case ADD_COMMENT:
+const createComment = (state = initState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case 'CREATE_COMMENT_START':
+      return { ...state, isLoading: true };
+    case 'CREATE_COMMENT_SUCCESS':
       return {
-        comment: [...action.payload]
-      }
-      case DELETE_COMMENT:
-      return {
-        comment: [...action.payload]
-      }
-      default:
-        return state;
+        ...state,
+        ...payload,
+        isLoading: false,
+        createSuccess: true,
+        error: null 
+      };
+    case 'CREATE_COMMENT_ERROR':
+      return { ...state, ...payload, isLoading: false };
+    case 'INIT_COMMENT':
+      return { ...state, ...payload, error: null };
+    default:
+      return state;
   }
-}
+};
 
-
-export default commentsReducer;
+export default createComment;

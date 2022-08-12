@@ -4,6 +4,7 @@ const initState = {
   description: '',
   price: '',
   photo: '',
+  comments: [],
   error: null,
   isLoading: false,
   createSuccess: false

@@ -76,6 +76,7 @@ export const initProduct = () => dispatch => {
       description: '',
       price: '',
       photo: '',
+      comments: [],
       createSuccess: false,
       error: null
     }
@@ -215,8 +216,9 @@ export const getProduct = payload => dispatch => {
 
   axios.get(`${process.env.REACT_APP_API}/products/product/${payload.id}`, payload.productData, config)
     .then(res => {
-      const { _id, productName, category, description, price, photo } = res.data;
-      const productData = { _id, productName, category, description, price, photo };
+      const { _id, productName, category, description, price, photo, comments } = res.data;
+      const productData = { _id, productName, category, description, price, photo, comments };
+      
       dispatch(getProductSuccess(productData));
       payload.setProductData(productData);
     })
