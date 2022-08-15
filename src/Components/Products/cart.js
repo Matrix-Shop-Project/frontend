@@ -53,7 +53,7 @@ const Cart = ({
   };
 console.log("Token Cart",token.user)
   return (
-    <div className='d-flex flex-wrap'>
+    <div className='d-flex flex-wrap justify-content-center'>
           {displayProduct(
             queryCur,
             sortType,
@@ -66,7 +66,7 @@ console.log("Token Cart",token.user)
 
               <Card
           key={products._id}
-          sx={{overflow: "visible", maxWidth: 445, padding: "20px", marginBottom: 3, marginRight: 3 }}
+          sx={{overflow: "visible", maxWidth: 445, padding: "20px", marginBottom: 3, marginRight: 3, boxShadow: "6px 6px 16px -2px rgba(0,0,0,0.20)" }}
         >
 
           <div className="shopping-cart-container">

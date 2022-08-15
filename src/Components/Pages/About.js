@@ -17,6 +17,9 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import * as DiIcons from "react-icons/di";
 import * as ImIcons from "react-icons/im";
 
+import { Box } from "@mui/material";
+
+
 const ExpandMore1 = styled((props) => {
   const { expand1, ...other } = props;
   return <IconButton {...other} />;
@@ -60,7 +63,7 @@ export default function RecipeReviewCard() {
       <div className="d-flex flex-wrap mt-5 justify-content-around ml-5 mr-5">
         {/* Ventsislav Kolev */}
         <div>
-          <Card sx={{ maxWidth: 345, marginTop: 5 }}>
+          <Card sx={{ maxWidth: 345, marginTop: 5, boxShadow: "6px 6px 16px -2px rgba(0,0,0,0.20)" }}>
             <CardHeader
               avatar={
                 <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -170,20 +173,37 @@ export default function RecipeReviewCard() {
               </CardContent>
             </Collapse>
           </Card>
-            {/*  <Box>
+             <Box>
               <a href="https://www.buymeacoffee.com/v.kolev"
               target="_blank"
               rel="noreferrer"
               >
-                <img src="https://img.buymeacoffee.com/button-api/?text=Kauf mir einen Kaffee&emoji=☕&slug=v.kolev&button_colour=00a7b3&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" />
+                <img src="https://img.buymeacoffee.com/button-api/?text=Kauf mir einen Kaffee&
+                emoji=☕&
+                slug=v.kolev&
+                button_colour=00a7b3&
+                font_colour=000000&
+                font_family=Cookie&
+                outline_colour=000000&
+                coffee_colour=FFDD00"
+                alt="Vens Kolev Kaffee" 
+                style={{
+                  height: "auto",
+                  width: "345px",
+                  borderRadius: 14,
+                  marginTop: "1rem",
+                  boxShadow: "6px 6px 11px 1px rgba(0,0,0,0.20)"
+                }}
+                />
                 </a>
               </Box>
-            */}
+           
         </div>
         {/* Orhan Kadirov */}
 
         <div >
-          <Card sx={{ maxWidth: 345, marginTop: 5 }}>
+          <Card sx={{ maxWidth: 345, marginTop: 5, boxShadow: "6px 6px 16px -2px rgba(0,0,0,0.20)" }}>
+
             <CardHeader
               avatar={
                 <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -278,7 +298,24 @@ export default function RecipeReviewCard() {
             target="_blank"
             rel="noreferrer"
           >
-            <img
+            <img src="https://img.buymeacoffee.com/button-api/?text=Kauf mir einen Kaffee&
+                emoji=☕&
+                slug=orhankadird&
+                button_colour=00a7b3&
+                font_colour=000000&
+                font_family=Cookie&
+                outline_colour=000000&
+                coffee_colour=FFDD00"
+                alt="Orhan Kadirov Kaffee" 
+                style={{
+                  height: "auto",
+                  width: "345px",
+                  borderRadius: 14,
+                  marginTop: "1rem",
+                  boxShadow: "6px 6px 11px 1px rgba(0,0,0,0.20)"
+                }}
+                />
+            {/* <img
               src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
               alt="Buy Me A Coffee"
               style={{
@@ -286,7 +323,7 @@ export default function RecipeReviewCard() {
                 width: "345px",
                 marginTop: "1rem"
               }}
-            />
+            /> */}
           </a>
         </div>
       </div>

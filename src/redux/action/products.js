@@ -83,6 +83,8 @@ export const initProduct = () => dispatch => {
   });
 };
 
+
+
 const editProductStart = () => {
   return {
     type: 'EDIT_PRODUCT_START',
@@ -224,3 +226,58 @@ export const getProduct = payload => dispatch => {
     })
     .catch(err => dispatch(getProductError(err)));
 };
+
+const createCommentStart = () => {
+  return {
+    type: 'CREATE_COMMENT_START',
+    payload: {}
+  };
+};
+const createCommentSuccess = productComment=> {
+  return {
+    type: 'CREATE_COMMENT_SUCCESS',
+    payload: productComment
+  };
+};
+
+const createCommentError = err => {
+  return {
+    type: 'CREATE_COMMENT_ERROR',
+    payload: { error: err }
+  };
+};
+
+export const createComment = payload => dispatch => {
+  dispatch(createCommentStart());
+console.log("createComment:", payload.productComment);
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': payload.token
+    }
+  };
+  
+  console.log("Redux IDComment:", payload.id)
+  axios
+    .post(`${process.env.REACT_APP_API}/comments/add/${payload.id}`, payload.productComment, config)
+    // .then(res => dispatch(createCommentSuccess(res.data)))
+    .then(res => {
+      dispatch(createCommentSuccess(res.data));
+      console.log("Product Comment",res.data);
+      
+      payload.initComment();
+    })
+    .catch(err => dispatch(createCommentError(err)));
+};
+export const initComment = () => dispatch => {
+  dispatch({
+    type:'INIT_COMMENT',
+    payload: {
+      author: "",
+      text: "",
+      timestamp: "",
+      createSuccess: false,
+      error: null
+    }
+  })
+}

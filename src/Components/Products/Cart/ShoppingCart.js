@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 // import { Redirect } from 'react-router-dom';
 import { connect, useDispatch } from "react-redux";
 // import { editProduct, initEdit } from "../../../redux/action/products";
-import { getProduct } from "../../../redux/action/products";
-import { createComment } from "../../../redux/action/commentsAction";
+import { getProduct, createComment, initComment } from "../../../redux/action/products";
+// import { createComment } from "../../../redux/action/commentsAction";
 
 import { setAlert } from "../../../redux/action/alert";
 // import { Loading } from "./utils";
@@ -19,7 +19,7 @@ import LoginIcon from '@mui/icons-material/Login';
 
 import SendIcon from '@mui/icons-material/Send';
 
-import { Comment,  Form, Header } from 'semantic-ui-react';
+import { Comment, Form, Header, TextArea } from 'semantic-ui-react';
 import { Box, TextField } from "@mui/material";
 
 
@@ -42,9 +42,10 @@ const Product = ({
   getError,
   createSuccess,
   createComment,
+  initComment,
 }) => {
   const nav = useNavigate();
-  const token= useUser();
+  const token = useUser();
   const params = useParams();
   const id = params.productId;
   //  const { addItem, setItems, emptyCart } = useCart();
@@ -53,25 +54,36 @@ const Product = ({
   // const { items } = useSelector((state) => state.cart)
 
   const [productData, setProductData] = useState({
-    _id: "",
+    id: "",
     productName: "",
     category: "",
     description: "",
     price: "",
     photo_base64: "",
     photo_file: null,
-    comments:[],
+    comments: [],
   });
+  const [productComment, setProductComment] = useState({
+    id: "",
+    author: "",
+    text: "",
+    timestamp: "",
+  })
 
   useEffect(() => {
     if (id) {
       getProduct({ id, setProductData, token });
     }
-  }, [id]);
+  }, []);
+
+  // useEffect(() => {
+  //   createComment({ id, setProductComment, token })
+  // }, [])
 
   const { productName, category, description, price, photo, comments } =
     productData;
-    
+  const { text } = productComment;
+
   //const { addItem } = useCart();
   const ImageBase64 = ({ data }) => (
     <>
@@ -109,17 +121,32 @@ const Product = ({
   const handleWarenkorp = () => {
     nav("/shoppingcard");
   };
-const [newComment, setNewComment] = useState([""]);
+  // const [newComment, setNewComment] = useState([""]);
+  // let timestampe = Date.now();
+  // console.log(new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestampe));
+
+  
+
+  let userName = token.user.name;
+  // console.log("UserName", userName)
 
   const handleAddCommentar = (e) => {
+    // const date = new Date();
+    // const timestampe = date.toLocaleDateString();
     e.preventDefault();
-    
-    createComment({productData, newComment}, token);
-    console.log("send")
+    createComment({productComment: { 
+      author: userName, 
+      text, 
+      // timestamp: timestampe 
+    }, token, id });
+    setTimeout(()=>{
+      window.location.reload(false);
+  }, 100);
+  // console.log("date:", timestampe)
   };
-
+// console.log("button create", productComment)
   const handleChange = e => {
-    setNewComment({comments: {text: e.target.value, author: token.user.name}});
+    setProductComment({ ...productComment, [e.target.name]: e.target.value });
   };
 
   // console.log("Comments Product: ", newComment)
@@ -175,53 +202,57 @@ const [newComment, setNewComment] = useState([""]);
               <Comment.Group threaded>
 
                 <Header as='h3' dividing>
-                  
+
                   Dieses Produkt bewerten
                 </Header>
                 <Header as='h5'>Bitte einloggen für kommentar zu schreiben!
                 </Header>
                 {comments.map((comment) => (
                   <Box>
-                <Comment>
-                  <Comment.Author as='h5' key={comment}>{comment.author}</Comment.Author>
-                  <Comment.Metadata>
-                     <div>{comment.timestamp}</div> 
-                  </Comment.Metadata>
-                  <Comment.Text as='p'>
-                     {comment.text} 
-                  </Comment.Text>
-                </Comment>
-                </Box>
+                    <Comment>
+                      <Comment.Author as='h5' key={comment}>{comment.author}</Comment.Author>
+                      <Comment.Metadata>
+                        <div>{comment.timestamp}</div>
+                      </Comment.Metadata>
+                      <Comment.Text as='p'>
+                        {comment.text}
+                      </Comment.Text>
+                    </Comment>
+                  </Box>
                 ))}
                 <Form reply>
+                  {/* <TextArea
+                  name="author"
+                  value={token.user.name} 
+                  /> */}
                   <TextField
                     id="outlined-multiline-static"
                     label="Sag deine Meinung zu diesem Artikel"
                     multiline
                     rows={4}
                     fullWidth
-                  // defaultValue="Deine Meinung ist wichtig für uns!"
-                  name={token.firstName}
-                   value={comments.text}
-                   onChange={handleChange}
+                    // defaultValue="Deine Meinung ist wichtig für uns!"
+                    name='text'
+                    value={text}
+                    onChange={(e) => handleChange(e)}
                   />
                   {token.user ?
-                  (<button
-                    className="btn btn-info mt-3"
-                    // value='Submit'
-                    type="submit"
-                    onClick={handleAddCommentar}
-                  >
-                      Schicken <SendIcon className="pl-2"/>
-                  </button>) : (<button
-                    className="btn btn-success mt-3"
-                    // value='Submit'
-                    type="submit"
-                    onClick={handleLogin}
-                  >
-                    <LoginIcon /> Jetzt Login
-                  </button>)
-                }
+                    (<button
+                      className="btn btn-info mt-3"
+                      // value='Submit'
+                      type="submit"
+                      onClick={handleAddCommentar}
+                    >
+                      Schicken <SendIcon className="pl-2" />
+                    </button>) : (<button
+                      className="btn btn-success mt-3"
+                      // value='Submit'
+                      type="submit"
+                      onClick={handleLogin}
+                    >
+                      <LoginIcon /> Jetzt Login
+                    </button>)
+                  }
                 </Form>
               </Comment.Group>
               <hr />
@@ -275,14 +306,16 @@ const mapStateToProps = (state) => {
     product: state.getProduct.product,
     error: state.editProduct.error,
     getError: state.getProduct.error,
-    // createSuccess: state.createComment.createSuccess,
+    //commentSuccess: state.createComment.createSuccess,
+
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setAlert: (alert) => dispatch(setAlert(alert)),
-    createComment: (data) => dispatch(createComment(data)),
+    createComment: (id, ProductComment) => dispatch(createComment(id, ProductComment)),
+    initComment: ()=> dispatch(initComment()),
     getProduct: (id, setProductData) =>
       dispatch(getProduct(id, setProductData)),
   };
