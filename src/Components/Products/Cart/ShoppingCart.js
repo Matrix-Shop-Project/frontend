@@ -103,7 +103,6 @@ const Product = ({
   const handleWarenkorp = () => {
     nav("/shoppingcard");
   };
-
   const [rating, setRating] = useState(2);
 
   const handleAddCommentar = (e) => {
@@ -128,9 +127,12 @@ const Product = ({
 
   return (
     <>
-      <div>
+      <div className="d-flex content-justify-center">
         <div className="create"> </div>
-        <div className="container" style={{ width: 900 }}>
+        <div className="container"
+        //  style={{ width: 900 }}
+         >
+
           <form>
             <div key={id}>
               <div className="form-group">
@@ -140,12 +142,13 @@ const Product = ({
                 <hr />
               </div>
 
-              <div className="form-group" style={{ width: 700 }}>
+              <div className="form-group w-75"
+              //  style={{ width: 700 }}
+               >
                 {description}
 
               </div><hr />
               <div className="form-group d-flex justify-content-around" style={{ width: 350 }}>
-
                 <h4>Price:</h4> <h4 style={{ color: "red" }}>{formatPrice(price)}</h4>
                 {token.user ?
                   (<button
@@ -216,11 +219,12 @@ const Product = ({
                   value={token.user.name} 
                   /> */}
                   <TextField
+                  className="w-75"
                     id="outlined-multiline-static"
                     label="Sag deine Meinung zu diesem Artikel"
                     multiline
                     rows={4}
-                    fullWidth
+                   fullWidth
                     // defaultValue="Deine Meinung ist wichtig für uns!"
                     name='text'
                     value={text}
@@ -251,7 +255,7 @@ const Product = ({
                 </Form>
               </Comment.Group>
               <hr />
-              <div className="btn-row" style={{ padding: "0 50px 0" }}>
+              <div className="btn-row" style={{ padding: "0 20px 0" }}>
                 <div className="btn-left">
 
                   {token.user ?
