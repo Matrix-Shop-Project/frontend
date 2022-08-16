@@ -66,6 +66,7 @@ const Product = ({
   useEffect(() => {
     if (id) {
       getProduct({ id, setProductData, token });
+      window.scrollTo(0, 0)
     }
   }, [getProduct, id, token]);
 
