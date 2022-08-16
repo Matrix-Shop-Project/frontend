@@ -133,6 +133,7 @@ const Product = ({
         <div className="container"
         //  style={{ width: 900 }}
          >
+
           <form>
             <div key={id}>
               <div className="form-group">
