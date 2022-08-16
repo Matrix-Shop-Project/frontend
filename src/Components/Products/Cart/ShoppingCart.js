@@ -1,31 +1,25 @@
 import React, { useState, useEffect } from "react";
-// import { Redirect } from 'react-router-dom';
-import { connect, useDispatch } from "react-redux";
-// import { editProduct, initEdit } from "../../../redux/action/products";
-import { getProduct, createComment, initComment } from "../../../redux/action/products";
-// import { createComment } from "../../../redux/action/commentsAction";
 
+import { connect, useDispatch } from "react-redux";
+
+import { getProduct, createComment, initComment } from "../../../redux/action/products";
 import { setAlert } from "../../../redux/action/alert";
-// import { Loading } from "./utils";
+
 import { Link, useParams } from "react-router-dom";
 import { useUser } from "../../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
-//  import { useCart } from "react-use-cart";
-// import { CartContext } from "../../../Context/CartContext"
-// import { useProductContext } from "../../../Context/ProductContext";
+
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { addToCart } from "../../../redux/action/cartActions";
 import LoginIcon from '@mui/icons-material/Login';
 
 import SendIcon from '@mui/icons-material/Send';
 
-import { Comment, Form, Header, TextArea } from 'semantic-ui-react';
+import { Comment, Form, Header } from 'semantic-ui-react';
 import { Box, TextField } from "@mui/material";
 
-
-
-
-// import axios from 'axios';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const Product = ({
   setAlert,
@@ -48,10 +42,9 @@ const Product = ({
   const token = useUser();
   const params = useParams();
   const id = params.productId;
-  //  const { addItem, setItems, emptyCart } = useCart();
-  //  const { products } = useProductContext();
+
   const dispatch = useDispatch();
-  // const { items } = useSelector((state) => state.cart)
+
 
   const [productData, setProductData] = useState({
     id: "",
@@ -84,7 +77,6 @@ const Product = ({
     productData;
   const { text } = productComment;
 
-  //const { addItem } = useCart();
   const ImageBase64 = ({ data }) => (
     <>
       {data ? <img style={{ width: 300 }} alt="Bild" src={data} /> : undefined}
@@ -97,16 +89,7 @@ const Product = ({
     }).format(price);
   };
 
-  //  const [addToCart, setAddToCart] = useState([]);
-
-  //  useEffect(() => {
-  // setAddToCart(productData)
-  // }, [addToCart, productData]);
-
-  // console.log("Add to kart",addToCart)
   const handleAddtoCart = () => {
-    // addItem(productData)
-    //  dispatch({type: 'cart/addItem', payload: {productName: "", category: "", description: "", price: "", photo: ""}})
     dispatch(addToCart(productData))
   };
 
@@ -114,43 +97,34 @@ const Product = ({
     nav("/login");
   };
 
-
   const handleBack = () => {
     nav("/");
   };
   const handleWarenkorp = () => {
     nav("/shoppingcard");
   };
-  // const [newComment, setNewComment] = useState([""]);
-  // let timestampe = Date.now();
-  // console.log(new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestampe));
 
-  
-
-  let userName = token.user.name;
-  // console.log("UserName", userName)
+  const [rating, setRating] = useState(2);
 
   const handleAddCommentar = (e) => {
-    // const date = new Date();
-    // const timestampe = date.toLocaleDateString();
+
+    let userName = token.user.name;
     e.preventDefault();
-    createComment({productComment: { 
-      author: userName, 
-      text, 
-      // timestamp: timestampe 
-    }, token, id });
-    setTimeout(()=>{
+    createComment({
+      productComment: {
+        author: userName,
+        text,
+        rating,
+      }, token, id
+    });
+    setTimeout(() => {
       window.location.reload(false);
-  }, 100);
-  // console.log("date:", timestampe)
+    }, 100);
   };
-// console.log("button create", productComment)
+ 
   const handleChange = e => {
     setProductComment({ ...productComment, [e.target.name]: e.target.value });
   };
-
-  // console.log("Comments Product: ", newComment)
-
 
   return (
     <>
@@ -193,34 +167,50 @@ const Product = ({
                 {/* <button onClick={()=> dispatch(addCoupon())}>Promo Code</button> */}
               </div>
               <div className="form-group">
-
-
                 <ImageBase64 data={photo} alt="Bild" />
-
               </div>
               <hr />
               <Comment.Group threaded>
-
-                <Header as='h3' dividing>
-
-                  Dieses Produkt bewerten
+                <Header as='h3' dividing>Bewertungen:
                 </Header>
-                <Header as='h5'>Bitte einloggen für kommentar zu schreiben!
-                </Header>
+                <hr />
                 {comments.map((comment) => (
                   <Box>
                     <Comment>
                       <Comment.Author as='h5' key={comment}>{comment.author}</Comment.Author>
                       <Comment.Metadata>
-                        <div>{comment.timestamp}</div>
+                        <div>{new Date(comment.createdAt).toLocaleDateString(undefined, 'de-DE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+                        }</div>
                       </Comment.Metadata>
+                      <div className="w-25 text-info">
+                        <Typography component="legend">Bewertung</Typography>
+                        <Rating name="read-only" value={comment.rating} readOnly />
+                        <hr />
+                      </div>
                       <Comment.Text as='p'>
                         {comment.text}
                       </Comment.Text>
                     </Comment>
+                    <hr /><hr />
                   </Box>
                 ))}
                 <Form reply>
+                  <Header as='h3' dividing>Dieses Produkt bewerten</Header>
+                  
+                  <Box
+                    sx={{
+                      '& > legend': { mt: 2 },
+                    }}
+                  >
+                    <Typography component="legend">Dein Bewertung</Typography>
+                    <Rating
+                      name="simple-controlled"
+                      value={rating}
+                      onChange={(event, newRating) => {
+                        setRating(newRating);
+                      }}
+                    />
+                  </Box>
                   {/* <TextArea
                   name="author"
                   value={token.user.name} 
@@ -244,14 +234,19 @@ const Product = ({
                       onClick={handleAddCommentar}
                     >
                       Schicken <SendIcon className="pl-2" />
-                    </button>) : (<button
+                    </button>) : (
+                      <>
+                      <Header as='h5'>Bitte einloggen für kommentar zu schreiben!
+                      </Header>
+                    <button
                       className="btn btn-success mt-3"
                       // value='Submit'
                       type="submit"
                       onClick={handleLogin}
                     >
                       <LoginIcon /> Jetzt Login
-                    </button>)
+                    </button></>
+                    )
                   }
                 </Form>
               </Comment.Group>
@@ -288,12 +283,6 @@ const Product = ({
           <div className="alert-text">{alertContent}</div>
         </div>
       </div>
-
-
-      {/* <div>
-      <h1>Du bist nicht angemeldet!</h1>
-
-    </div> */}
     </>)
 };
 
@@ -306,8 +295,6 @@ const mapStateToProps = (state) => {
     product: state.getProduct.product,
     error: state.editProduct.error,
     getError: state.getProduct.error,
-    //commentSuccess: state.createComment.createSuccess,
-
   };
 };
 
@@ -315,7 +302,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setAlert: (alert) => dispatch(setAlert(alert)),
     createComment: (id, ProductComment) => dispatch(createComment(id, ProductComment)),
-    initComment: ()=> dispatch(initComment()),
+    initComment: () => dispatch(initComment()),
     getProduct: (id, setProductData) =>
       dispatch(getProduct(id, setProductData)),
   };

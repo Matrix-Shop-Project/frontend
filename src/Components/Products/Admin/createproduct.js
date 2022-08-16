@@ -174,7 +174,7 @@ const CreateProduct = ({
                       <ImageBase64 data={photo_base64} alt='Bild' />
                       {/* <Upload /> */}
                       <small className='form-text text-muted'>
-                      JPEG, maximale Auflösung von 700px × 700px, maximale Größe 125kB
+                      JPEG, maximale Auflösung von 700px × 700px, maximale Größe 80kB
                       </small>
                     </div>
                     {/* {error && <Alert warning='server' item='create' />} */}

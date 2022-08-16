@@ -49,7 +49,10 @@ export const Register = () => {
       email: data.get('email'),
       password: data.get('password'),
     });
-    nav("/login");
+    setTimeout(() => {
+      nav("/login");
+    }, 100);
+    
   };
 
   return (

@@ -5,6 +5,7 @@ import "../../sass/Pages.scss";
 export default function Impressum() {
   return (
     <>
+    <div className="d-flex justify-content-center">
       <div className="impressum">
         <h1>Impressum</h1>
 
@@ -177,7 +178,7 @@ export default function Impressum() {
           wurde freundlicherweise von www.jurarat.de zur Verfügung gestellt.
         </p>
       </div>
-
+            </div>
     </>
   );
 }
