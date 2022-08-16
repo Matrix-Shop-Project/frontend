@@ -67,7 +67,7 @@ const Product = ({
     if (id) {
       getProduct({ id, setProductData, token });
     }
-  }, []);
+  }, [getProduct, id, token]);
 
   // useEffect(() => {
   //   createComment({ id, setProductComment, token })
