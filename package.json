@@ -51,7 +51,7 @@
     "react-shopping-cart": "^1.9.5",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.0.8",
-    "react-ui-cards": "^3.0.0",
+    "react-ui-cards": "^3.0.2",
     "react-use-cart": "^1.13.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
