@@ -32,8 +32,6 @@ import Cookies from "./Components/Cookie/Cookie"
 import Shipping from "./Components/Products/Shipping";
 import Payment from "./Components/Products/Payment";
 
-
-
 export default function App() {
   return (
     <div className="App">
