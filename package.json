@@ -37,7 +37,7 @@
     "nth-check": ">=2.0.1",
     "ra-data-simple-rest": "^4.2.0",
     "react": "^18.1.0",
-    "react-admin": "^4.2.0",
+    "react-admin": "^4.7.6",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
     "react-favicon": "^1.0.1",
